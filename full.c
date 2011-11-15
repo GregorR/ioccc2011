@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include <string.h>
+#include<string.h>
 #include<sys/mman.h>
 #define i int
 #define c char
@@ -11,10 +11,10 @@
 typedef i(*f)(i*);
 typedef i(*q)(i**,i*,f*);
 f ff;
-#define W 9<<19
+#define W 9<<16
 #define J(nm) i nm##s; nm(i**a,i*r,f*F){ i b[9]; F[2](b); (*(*a)
-J(m))=b[8]; ff(b); *b=0; }
-i n(i**a,i*r,f*F){ i b[9]; *b=0; ff(b); F[2](b); }
+J(m))=b[8]; *b=0; ff(b); *b=0; }
+i n(i**a,i*r,f*F){ i b[9]; *b=0; ff(b); (*(*a))=b[8]; F[2](b); }
 J(a))++; } /* a_dd */
 J(s))--; } /* s_ub */
 J(r)++); } /* r_ight */
@@ -48,7 +48,12 @@ main(){
     c*j,*e,*R,*x;
 
     /* get space */
-    j=e=mmap(0,9<<25,-1,MAP_PRIVATE|MAP_ANON,-1,0);
+    j=e=
+#ifndef NOMMAP
+    mmap(0,9<<25,-1,MAP_PRIVATE|MAP_ANON,-1,0);
+#else
+    malloc(9<<25);
+#endif
 
     /* figure out the size of the pro/epilogue */
     R=(c*)m;
@@ -60,6 +65,7 @@ main(){
     w(*--R==*--x);
     Rs=(c*)n-++R;
     R-=ms;
+    printf("%d %d\n", ms, Rs);
 
     /* figure out the sizes of functions */
 #define M(x,y) x##s=(c*)y-(c*)x-ms-Rs;
@@ -97,7 +103,7 @@ main(){
 
     C=111111;
     h=t;
-    w(C!=333333){J[C](&h,&C,(f*)L);}
+    w(C!=333333){ J[C](&h,&C,(f*)L);}
 
     return 0;
 }
