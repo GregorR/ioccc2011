@@ -7,10 +7,12 @@ no assembler and determines all platform-specific information dynamically at
 runtime. I have carefully arranged the functions to have a maximum chance of
 working by coincidence. And I assure you, when they work, it's by coincidence.
 
+
 Warnings you may get:
 
  * None of my functions return anything, even though they're all declared as
    int. Oh well, they don't need to.
+
 
 Behaviors and optimizations that may break JITchards:
 
@@ -23,21 +25,30 @@ Behaviors and optimizations that may break JITchards:
    * This accounts for -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
    * (No, I don't know why -fno-peephole2 rearranges functions)
    * Actually even -O1 rearranges, but in a way that turns out to be harmless
- * Branch delay instructions on returns (e.g. SPARC)
+ * Branch delay instructions on returns
+   * This accounts for -fno-delayed-branch
  * Assigning literal integers by storing them in .text and copying them (gcc
    ARM does this)
 
-Known-working platforms:
+
+Known-working platforms (for practical reasons I've only tested with gcc):
 
 gcc 4.6.2 + x86_64:
     -O0
     -O1
     -O2 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
     -O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
+
 gcc 4.6.2 + x86:
     -O0
     -O1
     -O2 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
     -O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
+
 gcc 4.4.5 + sparc:
     -O0
+
+gcc 4.4.5 + mips/mipsel:
+    -O0
+    -O1 -fno-delayed-branch
+    (-O2 -fno-delayed-branch still puts stuff in branch delay slots!)
