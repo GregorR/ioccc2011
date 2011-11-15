@@ -28,8 +28,7 @@ J(l)a->a--; re a; } /* l_eft */
 J(p) a->F[0](a); a->F[2](a); } /* p_utchar */
 J(g) a->F[1](a); a->F[2](a); } /* g_etchar */
 
-//P(ar a){ putchar(*a->a); }
-P(ar a){ printf("%d\n", *a->a); }
+P(ar a){ putchar(*a->a); }
 G(ar a){ *a->a=getchar(); }
 ri(i*C){ scanf("%d",C); }
 
