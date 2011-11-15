@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-g -ansi -pedantic
+CFLAGS=-g -ansi
 LDFLAGS=
 
 OBJS=full.o

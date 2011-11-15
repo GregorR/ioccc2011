@@ -3,7 +3,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#ifndef NOMMAP
 #include<sys/mman.h>
+#endif
 #define i int
 #define c char
 #define w while
@@ -11,21 +13,23 @@
 #define T case
 #define U break;
 #define vr volatile register
+#define re return(i*)
 typedef i(*f)(vr void*);
 typedef struct{i*a;i r;f*F;}*ar;
 #define W 9<<16
-#define J(nm) i nm##s; nm(vr ar a){
+#define J(nm) i nm##s; *nm(vr ar a){
 u(){ }
-J(m)a->F[2](alloca(8)); }
+J(m)a->F[2](alloca(8))?(a->r=9):0; a->F[2](0); }
 J(n)alloca(8); }
-J(a)(*a->a)++; } /* a_dd */
-J(s)(*a->a)--; } /* s_ub */
-J(r)a->a++; } /* r_ight */
-J(l)a->a--; } /* l_eft */
+J(a)(*a->a)++; re a; } /* a_dd */
+J(s)(*a->a)--; re a; } /* s_ub */
+J(r)a->a++; re a; } /* r_ight */
+J(l)a->a--; re a; } /* l_eft */
 J(p) a->F[0](a); a->F[2](a); } /* p_utchar */
 J(g) a->F[1](a); a->F[2](a); } /* g_etchar */
 
-P(ar a){ putchar(*a->a); }
+//P(ar a){ putchar(*a->a); }
+P(ar a){ printf("%d\n", *a->a); }
 G(ar a){ *a->a=getchar(); }
 ri(i*C){ scanf("%d",C); }
 
@@ -82,7 +86,6 @@ main(){
         Rs=(c*)n-++R;
         R-=ms;
     }
-    printf("%d %d\n", ms, Rs);
 
     /* figure out the sizes of functions */
 #define M(x,y) x##s=(c*)y-(c*)x-ms-Rs;
@@ -122,6 +125,11 @@ main(){
     ks->a=t;
     ks->r=111111;
     ks->F=(f*)L;
+#ifdef JDEBUG
+    fprintf(stderr, "%d %d\n", ms, Rs);
+    fwrite(j, 4, 1000, stdout);
+    fflush(stdout);
+#endif
     w(J[ks->r]){ J[ks->r](ks); }
 
     return 0;

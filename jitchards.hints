@@ -16,36 +16,39 @@ Warnings you may get:
 
 Behaviors and optimizations that may break JITchards:
 
- * Overflow detection code.
- * Not supporting register parameters.
+ * Anything that calls a function from every generated function, e.g. overflow
+   detection.
+   * This accounts for -fno-stack-check in owcc
+ * Incomplete support for register parameters.
  * Happening to overwrite the register parameter by coincidence :(
  * Rearranging or padding functions (functions must appear in output in the
    exact order they appear in the .c file, which is the common default but is
    changed by optimization flags)
    * This accounts for -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
-   * (No, I don't know why -fno-peephole2 rearranges functions)
+     (No, I don't know why -fno-peephole2 rearranges functions)
    * Actually even -O1 rearranges, but in a way that turns out to be harmless
  * Branch delay instructions on returns
    * This accounts for -fno-delayed-branch
  * Assigning literal integers by storing them in .text and copying them (gcc
    ARM does this)
+ * Inter-procedural code folding.
 
 
 Known-working platforms (for practical reasons I've only tested with gcc, marked * if changed since last test):
 
-gcc 4.6.2 + x86_64:
+gcc 4.6.2 + x86_64 *:
     -O0
     -O1
     -O2 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
     -O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
 
-gcc 4.6.2 + x86:
+gcc 4.6.2 + x86 *:
     -O0
     -O1
     -O2 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
     -O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
 
-gcc 4.4.5 + sparc:
+gcc 4.4.5 + sparc *:
     -O0
 
 gcc 4.4.5 + mips/mipsel *:
