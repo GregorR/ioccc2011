@@ -8,26 +8,29 @@
 #define S switch
 #define T case
 #define U break;
+#define ar (i**a,i*r,f*F)
 typedef i(*f)(i*);
-typedef i(*q)(i**,i*,f*);
+typedef i(*q)ar;
 f ff;
 #define W 9<<16
-#define J(nm) i nm##s; nm(i**a,i*r,f*F){ i b[9]; F[2](b); (*(*a)
-J(m))=b[8]; *b=0; ff(b); *b=0; }
-i n(i**a,i*r,f*F){ i b[9]; *b=0; ff(b); (*(*a))=b[8]; F[2](b); }
-J(a))++; } /* a_dd */
-J(s))--; } /* s_ub */
-J(r)++); } /* r_ight */
-J(l)--); } /* l_eft */
-J(p)); (*F)(*a); } /* p_utchar */
-J(g))=F[1](0); } /* g_etchar */
+#define J(nm) i nm##s; nm ar{ i b[9]; F[2](b);
+#define he i b[9];
+i m ar{ i b[9]; F[2](b); *b=0; ff(b); F[2](b); **a=b[8]; }
+i n ar{ i b[9]; F[2](b); ff(b); *b=0; **a=b[8]; F[2](b); }
+J(a)(**a)++; } /* a_dd */
+J(s)(**a)--; } /* s_ub */
+J(r)(*a)++; } /* r_ight */
+J(l)(*a)--; } /* l_eft */
+J(p) F[0](*a); } /* p_utchar */
+J(g) F[1](*a); } /* g_etchar */
 
 P(i*C){ putchar(*C); }
-u(i*C){ }
+G(i*C){ *C=getchar(); }
+u(){ }
 ri(i*C){ scanf("%d",C); }
 
 t[W];
-void*L[]={P,getchar,u};
+void*L[]={P,G,u};
 q J[W];
 
 #define A(x) O(x##1)O(x##2)O(x##3)
@@ -37,10 +40,10 @@ q J[W];
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define F(x) E(x##1)E(x##2)E(x##3)
 
-#define O(x) J(j##x)); *r=x; }
+#define O(x) J(j##x)*r=x; }
 F()
 #undef O
-#define O(x) J(J##x))?(*r=x):0; }
+#define O(x) J(J##x)**a?(*r=x):0; }
 F()
 
 main(){
@@ -80,7 +83,7 @@ main(){
 
     /* JIT */
 #define K(f)memcpy(e,(c*)f+ms,f##s);e+=f##s;
-    w((C=getchar())>=0) {
+    w((G(&C),C)>=0){
         S(C){
             T'+':K(a)U
             T'-':K(s)U
@@ -98,6 +101,7 @@ main(){
 #define O(x) if(C==x){K(J##x)}
             F()U
         }
+        if(C=='!')break;
     }
     K(R)
 
