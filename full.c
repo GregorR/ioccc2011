@@ -59,15 +59,28 @@ main(){
 #endif
 
     /* figure out the size of the pro/epilogue */
-    R=(c*)u-1;
-    x=(c*)m-1;
-    w(*++R==*++x);
-    ms=R-(c*)u;
-    R=(c*)n;
-    x=(c*)a;
-    w(*--R==*--x);
-    Rs=(c*)n-++R;
-    R-=ms;
+    if(((c*)m-(c*)u)%sizeof(i)==0){
+        i*Ri; i*xi;
+        Ri=(i*)u-1;
+        xi=(i*)m-1;
+        w(*++Ri==*++xi);
+        ms=(c*)Ri-(c*)u;
+        Ri=(i*)m;
+        xi=(i*)n;
+        w(*--Ri==*--xi);
+        Rs=(c*)m-(c*)++Ri;
+        R=(c*)Ri-ms;
+    } else {
+        R=(c*)u-1;
+        x=(c*)m-1;
+        w(*++R==*++x);
+        ms=R-(c*)u;
+        R=(c*)n;
+        x=(c*)a;
+        w(*--R==*--x);
+        Rs=(c*)n-++R;
+        R-=ms;
+    }
     printf("%d %d\n", ms, Rs);
 
     /* figure out the sizes of functions */
