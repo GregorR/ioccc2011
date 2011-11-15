@@ -1,0 +1,7 @@
+#define A(x) O(x##a)O(x##b)O(x##c)
+#define B(x) A(x##a)A(x##b)A(x##c)
+#define C(x) B(x##a)B(x##b)B(x##c)
+#define D(x) C(x##a)C(x##b)C(x##c)
+#define E(x) D(x##a)D(x##b)D(x##c)
+#define F(x) E(x##a)E(x##b)E(x##c)
+F()
