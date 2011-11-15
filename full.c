@@ -28,7 +28,7 @@ P(ar a){ putchar(*a->a); }
 G(ar a){ *a->a=getchar(); }
 ri(i*C){ scanf("%d",C); }
 
-t[W];
+i t[W];
 void*L[]={P,G,u};
 f J[W];
 
