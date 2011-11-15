@@ -10,10 +10,11 @@
 #define S switch
 #define T case
 #define U break;
-typedef i(*f)(register void*);
+#define vr volatile register
+typedef i(*f)(vr void*);
 typedef struct{i*a;i r;f*F;}*ar;
 #define W 9<<16
-#define J(nm) i nm##s; nm(register ar a){
+#define J(nm) i nm##s; nm(vr ar a){
 u(){ }
 J(m)a->F[2](alloca(8)); }
 J(n)alloca(8); }
