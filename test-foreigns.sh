@@ -2,12 +2,12 @@
 space() { echo; echo; echo; }
 
 echo native
-make clean all CFLAGS='-O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2'
+make clean all CFLAGS='-O3 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls'
 ./jitchards < hello.jch
 space
 
 echo 32
-make clean all CFLAGS='-m32 -O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2'
+make clean all CFLAGS='-m32 -O3 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls'
 ./jitchards < hello.jch
 space
 

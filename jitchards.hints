@@ -28,10 +28,10 @@ Behaviors and optimizations that may break JITchards:
  * Rearranging or padding functions (functions must appear in output in the
    exact order they appear in the .c file, which is the common default but is
    changed by optimization flags)
-   * This accounts for -fno-align-functions -fno-optimize-sibling-calls
-     -fno-peephole2
-     (No, I don't know why -fno-peephole2 rearranges functions)
+   * This accounts for -fno-align-functions -fno-toplevel-reorder
    * Actually even -O1 rearranges, but in a way that turns out to be harmless
+ * Tail call optimization
+   * This accounts for -fno-optimize-sibling-calls
  * Branch delay instructions on returns
    * This accounts for -fno-delayed-branch
  * Assigning literal integers by storing them in .text and copying them (gcc
@@ -46,14 +46,14 @@ marked * if changed since last test):
 gcc 4.6.2 + x86_64:
     -O0
     -O1
-    -O2 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
-    -O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
+    -O2 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls
+    -O3 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls
 
 gcc 4.6.2 + x86:
     -O0
     -O1
-    -O2 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
-    -O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
+    -O2 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls
+    -O3 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls
 
 owcc 1.9 + x86:
     -b win32 -DNOMMAP -fno-stack-check -O0
@@ -75,6 +75,9 @@ gcc 4.4.5 + mips/mipsel:
 
 gcc 4.4.5 + arm:
     -O0
+    -O1 -fno-toplevel-reorder
+    -O2 -fno-toplevel-reorder
+    -O3 -fno-toplevel-reorder
 
 
 Known-non-working platforms and reasons:
