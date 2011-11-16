@@ -48,7 +48,7 @@ G
 
 P(b ar o){ putchar(*d a); fflush(stdout); }
 I(b ar o){ *d a=getchar(); }
-v(i*C,ar o){ c a[7]; for(*C=0; *C<6; (*C)++)a[*C]=*d a++; a[7]=0; *C=atoi(a); }
+v(i*C,ar o){ c a[7]; for(*C=0; *C<6; (*C)++)a[*C]=*d a++; a[6]=0; *C=atoi(a); }
 H(b ar o){
     i C;
 #define K(f)memcpy(e,(c*)f+ms,f##s);e+=f##s;
