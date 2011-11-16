@@ -42,8 +42,7 @@ Behaviors and optimizations that may break JITchards:
  * Braindead optimization-free function prologues (e.g. subtract 0 from SP)
 
 
-Known-working platforms (for practical reasons I've only tested with gcc,
-marked * if changed since last test):
+Known-working platforms:
 
 gcc 4.6.2 + x86_64:
     -O0
@@ -82,3 +81,8 @@ gcc 4.4.5 + arm:
     -O1 -fno-toplevel-reorder
     -O2 -fno-toplevel-reorder
     -O3 -fno-toplevel-reorder
+
+gcc 4.4.5 + powerpc:
+    -O1
+    -O2
+    -O3
