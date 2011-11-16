@@ -31,7 +31,7 @@ typedef struct{i*a,r,m;f*F;}*ar;
 
 i*R,Rs,t[W];
 f J[W];
-c*e;
+c*j,*e;
 
 J(a)(*d a)++; q} /* a_dd */
 J(s)(*d a)--; q} /* s_ub */
@@ -78,11 +78,11 @@ H(b ar o){
 void*L[]={P,I,H,u};
 
 main(){
-    i*x,C,ms;
+    i*x,C;
     ar o=malloc(64);
 
     /* get space */
-    e=
+    j=e=
 #ifndef NOMMAP
     mmap(0,W,-1,MAP_PRIVATE|MAP_ANON,-1,0);
 #else
