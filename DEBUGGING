@@ -1,0 +1,7 @@
+Debug in this order:
+
+nothing.jch: Should be an infinite loop with no output. This tests function pro/epilogues.
+loop.jch: Loops through the ASCII character set infinitely. Tests + and . (kinda) without testing jumps.
+abc.jch: Tests everything but getchar, one at a time so it's easy to figure out what's broken.
+hello.jch: Tests everything in a "real" program
+cat repl.jch hello.jch gorepl.jch: Everything plus circularity.
