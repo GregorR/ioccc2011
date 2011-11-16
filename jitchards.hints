@@ -86,3 +86,6 @@ gcc 4.4.5 + powerpc/powerpc64:
     -O1
     -O2
     -O3
+
+gcc 4.4.5 + alpha:
+    -O0
