@@ -73,11 +73,11 @@ gcc 4.4.5 + mips/mipsel:
     -O1 -fno-delayed-branch
     (-O2 -fno-delayed-branch still puts stuff in branch delay slots!)
 
+gcc 4.4.5 + arm:
+    -O0
+
 
 Known-non-working platforms and reasons:
-
-gcc 4.4.5 + arm:
-    -O0: writes literals to .text and copies relative to pc
 
 gcc 4.4.5 + ia64:
     -O0: seems it can't do the putchar call?

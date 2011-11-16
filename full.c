@@ -43,13 +43,13 @@ f J[W];
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define F() E(1)E(2)E(3)
 
-#define O(x,y,z) J(j##x##y##z)a->r=(x*a->m+y)*a->m+z; ra} J(J##x##y##z)*a->a?(a->r=(x*a->m+y)*a->m+z):0; ra} e##x##y##z(){ }
+#define O(x,y,z) J(j##x##y##z)a->r=(x*a->m+y)*a->m+z; a->F[2](a); } J(J##x##y##z)*a->a?(a->r=(x*a->m+y)*a->m+z):0; a->F[2](a); } e##x##y##z(){ }
 F()
 
 main(){
     i*h,C,ms,Rs,*R,*x;
     c*j,*e;
-    ar ks=malloc(32);
+    ar ks=malloc(64);
 
     /* get space */
     j=e=
