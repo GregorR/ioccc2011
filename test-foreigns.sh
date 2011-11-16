@@ -23,6 +23,10 @@ echo mipsel
 ./test-foreign.sh mipsel mipsel '-O1 -fno-delayed-branch'
 space
 
+echo ppc
+./test-foreign.sh powerpc ppc -O3
+space
+
 echo arm
 make clean all CC=arm-linux-gnueabi-gcc CFLAGS='-static -O3 -fno-toplevel-reorder'
 qemu-arm ./jitchards < hello.jch
