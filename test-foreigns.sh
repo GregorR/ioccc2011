@@ -27,6 +27,10 @@ echo ppc
 ./test-foreign.sh powerpc ppc -O3
 space
 
+echo ppc64
+./test-foreign.sh powerpc ppc '-mpowerpc64 -O3'
+space
+
 echo arm
 make clean all CC=arm-linux-gnueabi-gcc CFLAGS='-static -O3 -fno-toplevel-reorder'
 qemu-arm ./jitchards < hello.jch

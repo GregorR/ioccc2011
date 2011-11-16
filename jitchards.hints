@@ -82,7 +82,7 @@ gcc 4.4.5 + arm:
     -O2 -fno-toplevel-reorder
     -O3 -fno-toplevel-reorder
 
-gcc 4.4.5 + powerpc:
+gcc 4.4.5 + powerpc/powerpc64:
     -O1
     -O2
     -O3
