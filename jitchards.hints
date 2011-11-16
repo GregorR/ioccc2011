@@ -67,21 +67,16 @@ tcc 0.9.25 + x86:
 
 gcc 4.4.5 + sparc:
     -O0
+    (-O1 and higher won't work due to a combined pop/return instruction that
+        makes the epilogue inconsistent)
 
 gcc 4.4.5 + mips/mipsel:
     -O0
     -O1 -fno-delayed-branch
-    (-O2 -fno-delayed-branch still puts stuff in branch delay slots!)
+    (-O2 -fno-delayed-branch -fno-toplevel-reorder -fno-optimize-sibling-calls doesn't quite work)
 
 gcc 4.4.5 + arm:
     -O0
     -O1 -fno-toplevel-reorder
     -O2 -fno-toplevel-reorder
     -O3 -fno-toplevel-reorder
-
-
-Known-non-working platforms and reasons:
-
-gcc 4.4.5 + ia64:
-    -O0: seems it can't do the putchar call?
-

@@ -18,15 +18,15 @@ typedef struct{i*a,r,m;f*F;}*ar;
 #define W 9<<16
 #define J(nm) i nm##s; i*nm(vr ar a){
 #define ra return(i*)a;
-u(){ }
-J(m)a->F[2](alloca(8))?(a->r=9):0; a->F[2](0); }
-J(n)alloca(8); }
 J(a)(*a->a)++; ra} /* a_dd */
 J(s)(*a->a)--; ra} /* s_ub */
 J(r)a->a++; ra} /* r_ight */
 J(l)a->a--; ra} /* l_eft */
 J(p) a->F[0](a); a->F[2](a); } /* p_utchar */
 J(g) a->F[1](a); a->F[2](a); } /* g_etchar */
+u(){ }
+J(m)a->F[2](alloca(8))?(a->r=9):0; a->F[2](0); }
+J(n)alloca(8); }
 
 P(ar a){ putchar(*a->a); }
 G(ar a){ *a->a=getchar(); }

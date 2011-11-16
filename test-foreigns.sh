@@ -24,7 +24,7 @@ echo mipsel
 space
 
 echo arm
-make clean all CC=arm-linux-gnueabi-gcc CFLAGS=-static
+make clean all CC=arm-linux-gnueabi-gcc CFLAGS='-static -O3 -fno-toplevel-reorder'
 qemu-arm ./jitchards < hello.jch
 space
 
