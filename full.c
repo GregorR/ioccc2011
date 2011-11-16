@@ -100,7 +100,6 @@ main(){
         w(*--R==*--x);
         Rs=(c*)m-(c*)++R;
         R=(i*)((c*)R-ms);
-        printf("%.08X\n", *R);
     } else {
         ms=0;
         R=(i*)((c*)n-1);
