@@ -28,7 +28,20 @@ then
     echo OpenWatcom
     make clean all CC=owcc CFLAGS='-b win32 -DNOMMAP -fno-stack-check -O0' && mv jitchards jitchards.exe
     WINEPREFIX="$PWD/wine" WINEDEBUG=-all wine jitchards.exe < hello.jch
+    rm -f jitchards.exe
 else
     echo 'WARNING: Not testing OpenWatcom'
 fi
 space
+
+if [ "`which tcc`" ]
+then
+    echo tcc
+    make clean all CC=tcc CFLAGS=-O2
+    ./jitchards < hello.jch
+else
+    echo 'WARNING: Not testing tcc'
+fi
+space
+
+make clean

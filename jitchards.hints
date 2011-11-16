@@ -43,30 +43,35 @@ Behaviors and optimizations that may break JITchards:
 Known-working platforms (for practical reasons I've only tested with gcc,
 marked * if changed since last test):
 
-gcc 4.6.2 + x86_64 *:
+gcc 4.6.2 + x86_64:
     -O0
     -O1
     -O2 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
     -O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
 
-gcc 4.6.2 + x86 *:
+gcc 4.6.2 + x86:
     -O0
     -O1
     -O2 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
     -O3 -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
-
-gcc 4.4.5 + sparc *:
-    -O0
-
-gcc 4.4.5 + mips/mipsel *:
-    -O0
-    -O1 -fno-delayed-branch
-    (-O2 -fno-delayed-branch still puts stuff in branch delay slots!)
 
 owcc 1.9 + x86:
     -b win32 -DNOMMAP -fno-stack-check -O0
     (-O1 does inter-procedural code folding which doesn't seem to be removed by
         -fno-optimize-sibling-calls)
+
+tcc 0.9.25 + x86:
+    (no flags)
+    -O1
+    -O2
+
+gcc 4.4.5 + sparc:
+    -O0
+
+gcc 4.4.5 + mips/mipsel:
+    -O0
+    -O1 -fno-delayed-branch
+    (-O2 -fno-delayed-branch still puts stuff in branch delay slots!)
 
 
 Known-non-working platforms and reasons:

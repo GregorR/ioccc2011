@@ -13,10 +13,10 @@
 #define T case
 #define U break;
 #define vr volatile register
-typedef i(*f)(vr void*);
+typedef i*(*f)(vr void*);
 typedef struct{i*a;i r;f*F;}*ar;
 #define W 9<<16
-#define J(nm) i nm##s; *nm(vr ar a){
+#define J(nm) i nm##s; i*nm(vr ar a){
 #define ra return(i*)a;
 u(){ }
 J(m)a->F[2](alloca(8))?(a->r=9):0; a->F[2](0); }
