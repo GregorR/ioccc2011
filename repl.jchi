@@ -11,18 +11,20 @@
 #define promptd     211311
 #define pcleara     211312
 #define pclearb     211313
-:main       ,----------^readln
+#define pclearc     211321
+:main       ,----------^prompt
 :readln     ++++++++++>,----------^endln?readln
 :endln      -^tostart
 :tostart    <^compile?tostart
 :compile    >=<+^clearb
 :cleara     -^clearb?cleara
 :clearb     <^311111?cleara
-:prompt     >+++++++^promptb
+:prompt     .+++++++^promptb
 :promptb    ^promptd?promptc
 :promptc    >+++++++++<-^promptb
 :promptd    >-.^pcleara
 :pcleara    -^pclearb?pcleara
-:pclearb    <^readln?pcleara
-:311111     ----------^readln
+:pclearb    <^pclearc?pcleara
+:pclearc    ----------^readln
+:311111     ^prompt
 !
