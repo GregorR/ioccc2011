@@ -16,6 +16,8 @@ Warnings you may get:
 
  * None of my functions return anything, even though they're all declared as
    int. Oh well, they don't need to.
+ * "incompatible implicit declaration of built-in function" for various
+   functions. #includes are for losers.
 
 
 Behaviors and optimizations that may break JITchards:
