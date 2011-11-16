@@ -7,6 +7,10 @@ no assembler and determines all platform-specific information dynamically at
 runtime. I have carefully arranged the functions to have a maximum chance of
 working by coincidence. And I assure you, when they work, it's by coincidence.
 
+On some platforms, optimizations are /required/ for JITchards to be able to
+detect function prologues and epilogues properly. On others, optimizations
+won't work. Play with it, you just might get a working JIT.
+
 
 Warnings you may get:
 
@@ -24,7 +28,8 @@ Behaviors and optimizations that may break JITchards:
  * Rearranging or padding functions (functions must appear in output in the
    exact order they appear in the .c file, which is the common default but is
    changed by optimization flags)
-   * This accounts for -fno-align-functions -fno-optimize-sibling-calls -fno-peephole2
+   * This accounts for -fno-align-functions -fno-optimize-sibling-calls
+     -fno-peephole2
      (No, I don't know why -fno-peephole2 rearranges functions)
    * Actually even -O1 rearranges, but in a way that turns out to be harmless
  * Branch delay instructions on returns
@@ -32,9 +37,11 @@ Behaviors and optimizations that may break JITchards:
  * Assigning literal integers by storing them in .text and copying them (gcc
    ARM does this)
  * Inter-procedural code folding.
+ * Braindead optimization-free function prologues (e.g. subtract 0 from SP)
 
 
-Known-working platforms (for practical reasons I've only tested with gcc, marked * if changed since last test):
+Known-working platforms (for practical reasons I've only tested with gcc,
+marked * if changed since last test):
 
 gcc 4.6.2 + x86_64 *:
     -O0
@@ -65,5 +72,8 @@ gcc 4.4.5 + arm:
 gcc 4.4.5 + ia64:
     -O0: seems it can't do the putchar call?
 
-owcc 1.9 + x86 + Windows/wine:
-    -b win32 -DNOMMAP -fno-stack-check: uses eax ambiguously
+owcc 1.9 + x86:
+    -fno-stack-check -O0: generates subl $0, %esp which confuses prologue
+        detection
+    -fno-stack-check -O1: inter-procedural code folding which doesn't seem to
+        be removed by -fno-optimize-sibling-calls
