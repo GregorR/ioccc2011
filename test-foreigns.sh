@@ -22,3 +22,13 @@ space
 echo mipsel
 ./test-foreign.sh mipsel mipsel '-O1 -fno-delayed-branch'
 space
+
+if [ "`which owcc`" ]
+then
+    echo OpenWatcom
+    make clean all CC=owcc CFLAGS='-b win32 -DNOMMAP -fno-stack-check -O0' && mv jitchards jitchards.exe
+    WINEPREFIX="$PWD/wine" WINEDEBUG=-all wine jitchards.exe < hello.jch
+else
+    echo 'WARNING: Not testing OpenWatcom'
+fi
+space

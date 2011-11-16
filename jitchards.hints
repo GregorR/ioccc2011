@@ -63,6 +63,11 @@ gcc 4.4.5 + mips/mipsel *:
     -O1 -fno-delayed-branch
     (-O2 -fno-delayed-branch still puts stuff in branch delay slots!)
 
+owcc 1.9 + x86:
+    -b win32 -DNOMMAP -fno-stack-check -O0
+    (-O1 does inter-procedural code folding which doesn't seem to be removed by
+        -fno-optimize-sibling-calls)
+
 
 Known-non-working platforms and reasons:
 
@@ -72,8 +77,3 @@ gcc 4.4.5 + arm:
 gcc 4.4.5 + ia64:
     -O0: seems it can't do the putchar call?
 
-owcc 1.9 + x86:
-    -fno-stack-check -O0: generates subl $0, %esp which confuses prologue
-        detection
-    -fno-stack-check -O1: inter-procedural code folding which doesn't seem to
-        be removed by -fno-optimize-sibling-calls

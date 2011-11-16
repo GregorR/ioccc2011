@@ -13,18 +13,18 @@
 #define T case
 #define U break;
 #define vr volatile register
-#define re return(i*)
 typedef i(*f)(vr void*);
 typedef struct{i*a;i r;f*F;}*ar;
 #define W 9<<16
 #define J(nm) i nm##s; *nm(vr ar a){
+#define ra return(i*)a;
 u(){ }
 J(m)a->F[2](alloca(8))?(a->r=9):0; a->F[2](0); }
 J(n)alloca(8); }
-J(a)(*a->a)++; re a; } /* a_dd */
-J(s)(*a->a)--; re a; } /* s_ub */
-J(r)a->a++; re a; } /* r_ight */
-J(l)a->a--; re a; } /* l_eft */
+J(a)(*a->a)++; ra} /* a_dd */
+J(s)(*a->a)--; ra} /* s_ub */
+J(r)a->a++; ra} /* r_ight */
+J(l)a->a--; ra} /* l_eft */
 J(p) a->F[0](a); a->F[2](a); } /* p_utchar */
 J(g) a->F[1](a); a->F[2](a); } /* g_etchar */
 
@@ -43,15 +43,15 @@ f J[W];
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define F() E(1)E(2)E(3)
 
-#define O(x) J(j##x)a->r=x; }
+#define O(x) J(j##x)a->r=x; ra}
 F()
 #undef O
-#define O(x) J(J##x)*a->a?(a->r=x):0; }
+#define O(x) J(J##x)*a->a?(a->r=x):0; ra}
 F()
 
 main(){
-    i*h,C,ms,Rs;
-    c*j,*e,*R,*x;
+    i*h,C,ms,Rs,*R,*x;
+    c*j,*e;
     ar ks=malloc(32);
 
     /* get space */
@@ -63,27 +63,20 @@ main(){
 #endif
 
     /* figure out the size of the pro/epilogue */
-    if(((c*)m-(c*)u)%sizeof(i)==0){
-        i*Ri; i*xi;
-        Ri=(i*)u-1;
-        xi=(i*)m-1;
-        w(*++Ri==*++xi);
-        ms=(c*)Ri-(c*)u;
-        Ri=(i*)m;
-        xi=(i*)n;
-        w(*--Ri==*--xi);
-        Rs=(c*)m-(c*)++Ri;
-        R=(c*)Ri-ms;
-    } else {
-        R=(c*)u-1;
-        x=(c*)m-1;
+    if(((c*)m-(c*)u)%4==0&&((c*)s-(c*)a)%4==0){
+        R=(i*)u-1;
+        x=(i*)m-1;
         w(*++R==*++x);
-        ms=R-(c*)u;
-        R=(c*)n;
-        x=(c*)a;
+        ms=(c*)R-(c*)u;
+        R=(i*)m;
+        x=(i*)n;
         w(*--R==*--x);
-        Rs=(c*)n-++R;
-        R-=ms;
+        Rs=(c*)m-(c*)++R;
+        R=(i*)((c*)R-ms);
+    } else {
+        ms=0;
+        R=(i*)((c*)n-1);
+        Rs=1;
     }
 
     /* figure out the sizes of functions */
