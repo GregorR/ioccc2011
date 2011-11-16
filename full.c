@@ -14,7 +14,7 @@
 #define U break;
 #define vr volatile register
 typedef i*(*f)(vr void*);
-typedef struct{i*a;i r;f*F;}*ar;
+typedef struct{i*a,r,m;f*F;}*ar;
 #define W 9<<16
 #define J(nm) i nm##s; i*nm(vr ar a){
 #define ra return(i*)a;
@@ -36,17 +36,14 @@ i t[W];
 void*L[]={P,G,u};
 f J[W];
 
-#define A(x) O(x##1)O(x##2)O(x##3)
-#define B(x) A(x##1)A(x##2)A(x##3)
-#define C(x) B(x##1)B(x##2)B(x##3)
-#define D(x) C(x##1)C(x##2)C(x##3)
+#define A(x,y,z) O(x,y,z##1)O(x,y,z##2)O(x,y,z##3)
+#define B(x,y) A(x,y,1)A(x,y,2)A(x,y,3)
+#define C(x,y) B(x,y##1)B(x,y##2)B(x,y##3)
+#define D(x) C(x,1)C(x,2)C(x,3)
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define F() E(1)E(2)E(3)
 
-#define O(x) J(j##x)a->r=x; ra}
-F()
-#undef O
-#define O(x) J(J##x)*a->a?(a->r=x):0; ra}
+#define O(x,y,z) J(j##x##y##z)a->r=(x*a->m+y)*a->m+z; ra} J(J##x##y##z)*a->a?(a->r=(x*a->m+y)*a->m+z):0; ra} e##x##y##z(){ }
 F()
 
 main(){
@@ -81,13 +78,9 @@ main(){
 
     /* figure out the sizes of functions */
 #define M(x,y) x##s=(c*)y-(c*)x-ms-Rs;
-    M(a,s); M(s,r); M(r,l); M(l,p); M(p,g); M(g,P); M(j111111,j111112);
+    M(a,s)M(s,r)M(r,l)M(l,p)M(p,g)M(g,P)
 #undef O
-#define O(x) j##x##s=j111111s;
-    F()
-    M(J111111,J111112);
-#undef O
-#define O(x) J##x##s=J111111s;
+#define O(x,y,z) M(j##x##y##z,J##x##y##z)M(J##x##y##z,e##x##y##z)
     F()
 
     /* JIT */
@@ -103,11 +96,11 @@ main(){
             T'$':K(R)ri(&C);J[C]=(f)e;memcpy(e,(c*)m,ms);e+=ms;U
             T'^':ri(&C);
 #undef O
-#define O(x) if(C==x){K(j##x)}
+#define O(x,y,z) if(C==x##y##z){K(j##x##y##z)}
             F()U
             T'?':ri(&C);
 #undef O
-#define O(x) if(C==x){K(J##x)}
+#define O(x,y,z) if(C==x##y##z){K(J##x##y##z)}
             F()U
         }
         if(C=='!')break;
@@ -116,6 +109,7 @@ main(){
 
     ks->a=t;
     ks->r=111111;
+    ks->m=100;
     ks->F=(f*)L;
 #ifdef JDEBUG
     fprintf(stderr, "%d %d\n", ms, Rs);

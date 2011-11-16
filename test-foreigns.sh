@@ -23,10 +23,15 @@ echo mipsel
 ./test-foreign.sh mipsel mipsel '-O1 -fno-delayed-branch'
 space
 
+echo arm
+make clean all CC=arm-linux-gnueabi-gcc CFLAGS=-static
+qemu-arm ./jitchards < hello.jch
+space
+
 if [ "`which owcc`" ]
 then
     echo OpenWatcom
-    make clean all CC=owcc CFLAGS='-b win32 -DNOMMAP -fno-stack-check -O0' && mv jitchards jitchards.exe
+    make clean all CC=owcc CFLAGS='-b win32 -DNOMMAP -fno-stack-check -O0' 2> /dev/null && mv jitchards jitchards.exe
     WINEPREFIX="$PWD/wine" WINEDEBUG=-all wine jitchards.exe < hello.jch
     rm -f jitchards.exe
 else
