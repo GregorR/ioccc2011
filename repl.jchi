@@ -1,0 +1,28 @@
+#define main        111111
+#define readln      211111
+#define endln       211112
+#define tostart     211113
+#define compile     211121
+#define cleara      211122
+#define clearb      211123
+#define prompt      211131
+#define promptb     211132
+#define promptc     211133
+#define promptd     211311
+#define pcleara     211312
+#define pclearb     211313
+:main       ,----------^readln
+:readln     ++++++++++>,----------^endln?readln
+:endln      -^tostart
+:tostart    <^compile?tostart
+:compile    >=<+^clearb
+:cleara     -^clearb?cleara
+:clearb     <^311111?cleara
+:prompt     >+++++++^promptb
+:promptb    ^promptd?promptc
+:promptc    >+++++++++<-^promptb
+:promptd    >-.^pcleara
+:pcleara    -^pclearb?pcleara
+:pclearb    <^readln?pcleara
+:311111     ----------^readln
+!
