@@ -12,24 +12,26 @@
 #define S switch
 #define T case
 #define U break;
-#define vr volatile register
-typedef i*(*f)(vr void*);
+#define b volatile register
+#define d a->
+#define k d F[2](a);
+typedef i*(*f)(b void*);
 typedef struct{i*a,r,m;f*F;}*ar;
 #define W 9<<16
-#define J(nm) i nm##s; i*nm(vr ar a){
+#define J(nm) i nm##s; i*nm(b ar a){
 #define ra return(i*)a;
-J(a)(*a->a)++; ra} /* a_dd */
-J(s)(*a->a)--; ra} /* s_ub */
-J(r)a->a++; ra} /* r_ight */
-J(l)a->a--; ra} /* l_eft */
-J(p) a->F[0](a); a->F[2](a); } /* p_utchar */
-J(g) a->F[1](a); a->F[2](a); } /* g_etchar */
+J(a)(*d a)++; ra} /* a_dd */
+J(s)(*d a)--; ra} /* s_ub */
+J(r)d a++; ra} /* r_ight */
+J(l)d a--; ra} /* l_eft */
+J(p) d F[0](a); k} /* p_utchar */
+J(g) d F[1](a); k} /* g_etchar */
 u(){ }
-J(m)a->F[2](alloca(8))?(a->r=9):0; a->F[2](0); }
+J(m)d F[2](alloca(8))?(d r=9):0; d F[2](0); }
 J(n)alloca(8); }
 
-P(ar a){ putchar(*a->a); }
-G(ar a){ *a->a=getchar(); }
+P(b ar a){ putchar(*d a); }
+G(b ar a){ *d a=getchar(); }
 ri(i*C){ scanf("%d",C); }
 
 i t[W];
@@ -43,7 +45,7 @@ f J[W];
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define F() E(1)E(2)E(3)
 
-#define O(x,y,z) J(j##x##y##z)a->r=(x*a->m+y)*a->m+z; a->F[2](a); } J(J##x##y##z)*a->a?(a->r=(x*a->m+y)*a->m+z):0; a->F[2](a); } e##x##y##z(){ }
+#define O(x,y,z) J(j##x##y##z)d r=(x*d m+y)*d m+z; k} J(J##x##y##z)*d a?(d r=(x*d m+y)*d m+z):0; k} e##x##y##z(){ }
 F()
 
 main(){
