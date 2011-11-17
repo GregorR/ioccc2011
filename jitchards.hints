@@ -42,13 +42,15 @@ Behaviors and optimizations that may break JITchards:
  * Braindead optimization-free function prologues (e.g. subtract 0 from SP)
 
 
-Known-working platforms:
+Known-working platforms and compiler flags:
 
 gcc 4.6.2 + x86/x86_64:
     -O0
     -O1
     -O2 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls
     -O3 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls
+    (Note: Currently this does not work with the GCC LLVM backend as used on
+        e.g. Mac OS X. clang works there though, see the clang section below)
 
 owcc 1.9 + x86:
     -b win32 -DNOMMAP -DAH -fno-stack-check -O0
