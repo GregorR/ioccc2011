@@ -91,3 +91,8 @@ gcc 4.4.5 + alpha:
 
 gcc 4.1.3 + vax:
     -O0
+
+gcc 4.4.6 + sh4:
+    -O0
+    (-O1 and higher won't work as JITchards doesn't really understand that sh4
+        has 16-bit ops, the fact that -O0 works is a coincidence)

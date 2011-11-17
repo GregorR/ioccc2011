@@ -45,6 +45,10 @@ echo alpha
 ./test-foreign.sh alphaev56-unknown alpha
 space
 
+echo sh4
+./test-foreign.sh sh4-unknown sh4
+space
+
 echo arm
 make clean all CC=arm-linux-gnueabi-gcc CFLAGS='-static -O3 -fno-toplevel-reorder'
 qemu-arm ./jitchards < hello.jch
