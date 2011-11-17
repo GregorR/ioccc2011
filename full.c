@@ -1,9 +1,11 @@
 #define _GNU_SOURCE
+#if AH
 #include<alloca.h>
+#endif
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#ifndef NOMMAP
+#if !NOMMAP
 #include<sys/mman.h>
 #endif
 #define i int
@@ -83,10 +85,10 @@ main(){
 
     /* get space */
     j=e=
-#ifndef NOMMAP
-    mmap(0,W,-1,MAP_PRIVATE|MAP_ANON,-1,0);
-#else
+#if NOMMAP
     malloc(W);
+#else
+    mmap(0,W,-1,MAP_PRIVATE|MAP_ANON,-1,0);
 #endif
 
     /* figure out the size of the pro/epilogue */
@@ -101,13 +103,17 @@ main(){
         Rs=(c*)m-(c*)++R;
         R=(i*)((c*)R-ms);
     } else {
-        ms=0;
-        R=(i*)((c*)n-1);
+        e=(c*)u-1;
+        w(*++e==0);
+        ms=e-(c*)u;
+        R=(i*)((c*)m-ms-1);
+        C=((c*)m)[-1];
         Rs=1;
+        e=j;
     }
 
     /* figure out the sizes of functions */
-#define M(x,y) x##s=(c*)y-(c*)x-ms-Rs;
+#define M(x,y) x##s=(c*)y-(c*)x-Rs;if(Rs==1)while(((c*)x)[x##s]!=C)x##s--;x##s-=ms;
     M(a,s)M(s,r)M(r,l)M(l,p)M(p,g)M(g,h)M(h,u)
 #undef O
 #define O(x,y,z) M(j##x##y##z,J##x##y##z)M(J##x##y##z,e##x##y##z)

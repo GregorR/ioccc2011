@@ -53,7 +53,7 @@ space
 if [ "`which owcc`" ]
 then
     echo OpenWatcom
-    make clean all CC=owcc CFLAGS='-b win32 -DNOMMAP -fno-stack-check -O0' 2> /dev/null && mv jitchards jitchards.exe
+    make clean all CC=owcc CFLAGS='-b win32 -DNOMMAP -DAH -fno-stack-check -O0' 2> /dev/null && mv jitchards jitchards.exe
     WINEPREFIX="$PWD/wine" WINEDEBUG=-all wine jitchards.exe < hello.jch
     rm -f jitchards.exe
 else
