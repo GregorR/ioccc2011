@@ -1,4 +1,5 @@
 #include<alloca.h>
+#include<stdio.h>
 #ifndef NOMMAP
 #include<sys/mman.h>
 #endif
@@ -10,7 +11,7 @@
 #define U break;
 #define b volatile register
 #define d o->
-#define k d F[2](o);
+#define k d F[3](o);
 #define W 9<<16
 #define J(nm) i nm##s; i*nm(b ar o){
 #define q return(i*)o;
@@ -21,32 +22,33 @@
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define G E(1)E(2)E(3)
 #define O(x,y,z) J(j##x##y##z)d r=(x*d m+y)*d m+z; k} J(J##x##y##z)*d a?(d r=(x*d m+y)*d m+z):0; k} e##x##y##z(){ }
-typedef i*(*f)(b void*); typedef struct{i*a,r,m;f*F;}*ar; J(a)(*d a)++; q}
-J(s)(*d a)--; q} J(r)d a++; q} J(l)d a--; q} J(p) d F[0](o); k} J(g) d F[1](o);
-k} u(){ } J(m)d F[2](alloca(8))?(d r=9):0; k} J(n)alloca(8); } P(b ar o){
-putchar(*d a); } R(b ar o){ *d a=getchar(); } v(i*C){ scanf("%d",C); } i t[W];
-void*L[]={P,R,u}; f J[W]; G main(){ i*R,*x,C,ms,Rs; c*e; ar o=malloc(64); e=
+typedef i*(*f)(b void*); typedef struct{i*a,r,m;f*F;}*ar; i*R,Rs,t[W]; f J[W];
+c*j,*e; J(a)(*d a)++; q} J(s)(*d a)--; q} J(r)d a++; q} J(l)d a--; q} J(p)d
+F[0](o); k} J(g)d F[1](o); k} J(h)d F[2](o); k} u(){ } J(m)d F[3](alloca(8))?(d
+r=9):0; k} J(n)alloca(8); } G P(b ar o){ putchar(*d a); fflush(stdout); } I(b
+ar o){ *d a=getchar(); } v(i*C,ar o){ c a[7]; for(*C=0; *C<6; (*C)++)a[*C]=*d
+a++; a[6]=0; *C=atoi(a); } H(b ar o){ i C;
+#define K(f)memcpy(e,(c*)f+ms,f##s);e+=f##s;
+w((C=*d a++)>=0){ S(C){ T'+':K(a)U T'-':K(s)U T'>':K(r)U T'<':K(l)U T'.':K(p)U
+T',':K(g)U T'=':K(h)U T':':K(R)v(&C,o);J[C]=(f)e;memcpy(e,(c*)m,ms);e+=ms;U
+T'^':v(&C,o);
+#undef O
+#define O(x,y,z) if(C==x##y##z){K(j##x##y##z)}
+G U T'?':v(&C,o);
+#undef O
+#define O(x,y,z) if(C==x##y##z){K(J##x##y##z)}
+G U } } K(R) } void*L[]={P,I,H,u}; main(){ i*x,C; ar o=malloc(64); j=e=
 #ifndef NOMMAP
-mmap(0,9<<25,-1,MAP_PRIVATE|MAP_ANON,-1,0);
+mmap(0,W,-1,MAP_PRIVATE|MAP_ANON,-1,0);
 #else
-malloc(9<<25);
+malloc(W);
 #endif
 if(((c*)m-(c*)u)%4==0&&((c*)s-(c*)a)%4==0){ R=(i*)u-1; x=(i*)m-1;
 w(*++R==*++x); ms=(c*)R-(c*)u; R=(i*)m; x=(i*)n; w(*--R==*--x);
 Rs=(c*)m-(c*)++R; R=(i*)((c*)R-ms); } else { ms=0; R=(i*)((c*)n-1); Rs=1; }
 #define M(x,y) x##s=(c*)y-(c*)x-ms-Rs;
-M(a,s)M(s,r)M(r,l)M(l,p)M(p,g)M(g,P)
+M(a,s)M(s,r)M(r,l)M(l,p)M(p,g)M(g,h)M(h,u)
 #undef O
 #define O(x,y,z) M(j##x##y##z,J##x##y##z)M(J##x##y##z,e##x##y##z)
-G
-#define K(f)memcpy(e,(c*)f+ms,f##s);e+=f##s;
-w((C=getchar())>=0){ S(C){ T'+':K(a)U T'-':K(s)U T'>':K(r)U T'<':K(l)U
-T'.':K(p)U T',':K(g)U T'$':K(R)v(&C);J[C]=(f)e;memcpy(e,(c*)m,ms);e+=ms;U
-T'^':v(&C);
-#undef O
-#define O(x,y,z) if(C==x##y##z){K(j##x##y##z)}
-G U T'?':v(&C);
-#undef O
-#define O(x,y,z) if(C==x##y##z){K(J##x##y##z)}
-G U } if(C=='!')U } K(R) d a=t; d r=111111; d m=100; d F=(f*)L; w(J[d r]){ J[d
-r](o); } }
+G d a=t; d r=111111; d m=100; d F=(f*)L; w((C=*d a++=getchar())>=0)if(C=='!'){
+d a[-1]=-1; U} d a=t; H(o); w(J[d r]){ J[d r](o); } }
