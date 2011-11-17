@@ -44,13 +44,7 @@ Behaviors and optimizations that may break JITchards:
 
 Known-working platforms:
 
-gcc 4.6.2 + x86_64:
-    -O0
-    -O1
-    -O2 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls
-    -O3 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls
-
-gcc 4.6.2 + x86:
+gcc 4.6.2 + x86/x86_64:
     -O0
     -O1
     -O2 -fno-align-functions -fno-toplevel-reorder -fno-optimize-sibling-calls
@@ -65,6 +59,10 @@ tcc 0.9.25 + x86:
     (no flags)
     -O1
     -O2
+
+clang + x86/x86_64:
+    -Os
+    (in all other modes, function alignment gets us)
 
 gcc 4.4.5 + sparc:
     -O0

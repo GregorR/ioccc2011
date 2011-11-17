@@ -11,6 +11,16 @@ make clean all CFLAGS='-m32 -O3 -fno-align-functions -fno-toplevel-reorder -fno-
 ./jitchards < hello.jch
 space
 
+echo clang
+make clean all CC=clang CFLAGS=-Os
+./jitchards < hello.jch
+space
+
+echo clang-32
+make clean all CC=clang CFLAGS='-m32 -Os'
+./jitchards < hello.jch
+space
+
 echo sparc
 ./test-foreign.sh sparc sparc32plus
 space
