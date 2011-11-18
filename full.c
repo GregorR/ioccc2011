@@ -3,6 +3,7 @@
 #include<alloca.h>
 #endif
 #include<math.h>
+#include<setjmp.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -45,22 +46,29 @@ void jit(volatile dat d) {
 
 void end() {}
 
+dat state;
 int stack[9<<16];
-void *last;
+char *last;
 void *code[9<<16];
 int size[256];
 char *j, *e;
 
-void rsub(int v) {
-    void *a=0,**b=&a;
+void rsubd(int v) {
+    char *a=0,**b=&a;
     code[v] = last;
-    while (*b < (void*) jit || *b > (void *) end) b++;
+    while (*b < jit || *b > end || *b == (char *) v) b++;
     size[v] = *b - last - size['F'];
     last = *b;
 }
 
+typedef void(*rsubt)(int);
+volatile rsubt rsub = rsubd;
+
 void recorder(volatile char *rec) {
     static int i = 0;
+    jmp_buf j;
+    *(state->a = stack+9) = 0;
+    setjmp(j);
     rsub(*rec?*rec:mi[i++]);
 }
 
@@ -87,18 +95,18 @@ void literal(int v) {
 int main() {
     int i;
     char c;
-    dat d = malloc(64);
-    S a = stack;
+    dat d = state = malloc(64);
+    S a = stack + 9;
     S h = 0;
     S m = mo;
     S l = (f*) lib1;
     S r = (f) recorder;
     for (i=0;mi[i];i++)mo[mi[i]]=i;
-    last=jit;
+    last = (char*) jit;
     jit(d);
     size['1'] -= size['F'];
     code['2'] = last;
-    size['2'] = 32;
+    size['2'] = (char *) end - last + 8;
 
     S h = 100;
     S l = (f*) lib2;
