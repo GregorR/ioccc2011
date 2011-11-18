@@ -8,14 +8,8 @@ gcc 4.6.2 + x86[_64]:
 owcc 1.9 + x86 + Windows:
     -fno-stack-check must be provided in all modes
 
-gcc 4.4.5 + alpha, arm, powerpc, powerpc64, s390x (IBM z/Series):
+gcc 4.4.5 + alpha, arm, mips, mipsel, powerpc, powerpc64, s390x (IBM z/Series):
     -O0, -O1, -O2, -O3
-
-gcc 4.4.5 + mips, mipsel:
-    -O0
-    -O1
-    -O2 -fno-optimize-sibling-calls
-    -O3 -fno-optimize-sibling-calls
 
 gcc 4.4.5 + sh4:
     -O0
