@@ -1,16 +1,20 @@
 Shown is the exact compiler version tested. All tests are on GNU/Linux unless
-specified otherwise. I expect things to generally work with other versions of
-the compilers, but show only the tested version for honesty sake.
+specified otherwise, though the OS is mostly irrelevant. I expect things to
+generally work with other versions of the compilers, but show only the tested
+version for honesty sake.
 
-gcc 4.6.2 + x86[_64]:
-    -O0, -O1, -O2, -O3
+Platforms on which all known/tested optimization levels work with no additional
+flags:
+ * gcc 4.6.2 + x86[_64]
+ * clang 2.9-16 + x86[_64]
+ * gcc 4.4.5 + alpha, arm, mips[el], powerpc[64], s390x (IBM zSeries)
+ * gcc 4.1.3 + vax + NetBSD
 
+Platforms which work but not at all optimization levels or needing special
+flags:
 owcc 1.9 + x86 + Windows:
-    -fno-stack-check must be provided in all modes
-
-gcc 4.4.5 + alpha, arm, mips, mipsel, powerpc, powerpc64, s390x (IBM z/Series):
-    -O0, -O1, -O2, -O3
+    Needs -fno-stack-check
 
 gcc 4.4.5 + sh4:
-    -O0
+    -O0 works
     Higher optimization levels don't work for unknown reasons.
