@@ -35,9 +35,20 @@ void link(struct SS **ssh, struct SS *n)
     *ssh = n;
 }
 
+int sscmp(struct SS **a, struct SS **b)
+{
+    if ((*a)->savings < (*b)->savings) {
+        return -1;
+    } else if ((*a)->savings > (*b)->savings) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 int main()
 {
-    struct SS *ssl = NULL, *nl = NULL, *ssc, *ssn;
+    struct SS *ssl = NULL, *nl = NULL, *ssc, *ssn, **ssa;
     struct SS *sss[0x100];
     struct Buffer_char f;
     int i, l, sl;
@@ -110,12 +121,25 @@ int main()
     }
     fprintf(stderr, "\n");
 
+    /* put them all on an array */
+    for (i = 0, ssn = ssl; ssn; i++, ssn = ssn->next);
+    SF(ssa, malloc, NULL, (sizeof(struct SS *) * (i+1)));
+    for (i = 0, ssn = ssl; ssn; i++, ssn = ssn->next) ssa[i] = ssn;
+    ssa[i] = NULL;
+
+    /* sort it */
+    qsort(ssa, i, sizeof(struct SS *), sscmp);
+
     /* for readability, remove newlines */
     for (l = 0; l < f.bufused; l++) {
         if (f.buf[l] == '\n') f.buf[l] = '\\';
     }
 
-    for (ssn = ssl; ssn; ssn = ssn->next) {
+    /*for (ssn = ssl; ssn; ssn = ssn->next) {
+        printf("%d: %.*s: (%d*%d)\n", ssn->savings, ssn->len, ssn->locs[0], ssn->len-1, ssn->count-1);
+    }*/
+    for (i = 0; ssa[i]; i++) {
+        ssn = ssa[i];
         printf("%d: %.*s: (%d*%d)\n", ssn->savings, ssn->len, ssn->locs[0], ssn->len-1, ssn->count-1);
     }
 
