@@ -23,42 +23,48 @@
 #define F(x) void l##x(vo dat d) {
 #define Q(x) S a[-1] x##=*S a;S a--;R(x)
 #define O(x,y,z) x##y##z,
+#define q typedef
+#define H 9<<16
 
-int m[]={G 0};
-int n[9<<16];
+q char k;
+q void o;
+q int u;
 
-typedef void (*f)(vo void*);
-typedef struct { int*a,*t,h,*m; char**s; f*j,*l,r; }*dat;
+u m[]={G 0};
+u n[H];
 
-void t(vo dat d) {
+q o (*f)(vo o*);
+q struct { u*a,*t,h,*m; k**s; f*j,*l,r; }*dat;
+
+o t(vo dat d) {
     R(1)/*R(F)*/Q(+)Q(-)Q(*)*S a=-*S a;R(_)L(1,/)L(2,P)L(3,p)L(4,v)
 #undef O
 #define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z];S r("");
     G S l[0](d);
 }
 
-void T() {}
+o T() {}
 
 dat state;
-int stack[9<<16];
-char*last;
-void*code[9<<16];
-int size[9<<16];
-char*j,*e;
+u stack[H];
+k*w;
+o*x[H];
+u y[H];
+k*j,*e;
 
-void rsubd(int v) {
-    char*a=0,**b=&a;
-    code[v]=last;
-    while (*b<last||*b>(char*)T||*b==(char*)(long)v)b++;
-    size[v]=*b-last-size['F'];
-    last=*b;
+o rsubd(u v) {
+    k*a=0,**b=&a;
+    x[v]=w;
+    while (*b<w||*b>(k*)T||*b==(k*)(long)v)b++;
+    y[v]=*b-w-y['F'];
+    w=*b;
 }
 
-typedef void(*rsubt)(int);
+q o(*rsubt)(u);
 vo rsubt rsub=rsubd;
 
-void recorder(vo char*rec) {
-    static int i=0;
+o recorder(vo k*rec) {
+    static u i=0;
     jmp_buf j;
     *(state->a=stack+9)=0;
     setjmp(j);
@@ -70,24 +76,24 @@ F(P)printf("%d",*S a); fflush(stdout); }
 F(p)printf("%d\n",*S a); }
 F(v)*S a=sqrt(*S a); }
 
-void*lib1[]={T,T,T,T,T};
-void*lib2[]={T,ld,lP,lp,lv};
+o*lib1[]={T,T,T,T,T};
+o*lib2[]={T,ld,lP,lp,lv};
 
-#define W(c) memcpy(e,code[(int)c],size[(int)c]);e+=size[(int)c];
+#define W(c) memcpy(e,x[(u)c],y[(u)c]);e+=y[(u)c];
 
-void literal(int v) {
+o g(u v) {
     if (v>256) {
-        literal(v/256);
-        literal(256);
+        g(v/256);
+        g(256);
         W('*');
     } else {
         W(m[v]);
     }
 }
 
-int main() {
-    int i;
-    char c;
+u main() {
+    u i;
+    k c;
     dat d=state=malloc(64);
     S a=stack+9;
     S h=0;
@@ -95,11 +101,11 @@ int main() {
     S l=(f*)lib1;
     S r=(f)recorder;
     for (i=0;m[i];i++)n[m[i]]=i;
-    last=(char*)t;
+    w=(k*)t;
     t(d);
-    size['1']-=size['F'];
-    code['2']=last;
-    size['2']=(char*)T-last+8;
+    y['1']-=y['F'];
+    x['2']=w;
+    y['2']=(k*)T-w+8;
 
     S h=100;
     S l=(f*)lib2;
@@ -108,20 +114,20 @@ int main() {
     /* get space */
     j=e=
 #if NOMMAP
-    malloc(9<<16);
+    malloc(H);
 #else
-    mmap(0,9<<16,-1,MAP_PRIVATE|MAP_ANON,-1,0);
+    mmap(0,H,-1,MAP_PRIVATE|MAP_ANON,-1,0);
 #endif
 
     W('1')
     while (!feof(stdin)) {
         if (scanf("%d",&i)>0) {
-            literal(i);
+            g(i);
         } else if (scanf("%c",&c)>0) {
             switch(c){
                 case '_':
                     scanf("%d",&i);
-                    literal(i);
+                    g(i);
                     break;
             }
             W(c)
