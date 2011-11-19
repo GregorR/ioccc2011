@@ -30,7 +30,7 @@ q char k;
 q void o;
 q int u;
 q o (*f)(vo o*);
-q struct { u*a,h,*m,c; k*s[H]; f*l,j[H],r; }*dat;
+q struct { u*a,*m,h,c; k**s; f*l,*j,r; }*dat;
 
 u m[]={G 0};
 u n[H];
@@ -130,9 +130,11 @@ u main(){
     k*b,c;
     dat d=st=malloc(sizeof(*st));
     S a=sk+9;
-    S h=S c=0;
     S m=n;
+    S h=S c=0;
+    S s=malloc(H);
     S l=(f*)lib1;
+    S j=malloc(H);
     S r=(f)recorder;
     for (i=0;m[i];i++)n[m[i]]=i;
     w=(k*)t;
