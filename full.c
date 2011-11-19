@@ -102,11 +102,17 @@ o t(vo dat d) {
 o T(){ }
 
 o rsubd(u v){
-    k*a=0,**b=&a;
+    k*a=0,**b=&a,**c=b+32;
     x[v]=w;
-    while(*b<w||*b>(k*)T||*b==(k*)(long)v)b++;
-    y[v]=*b-w-y['F'];
-    w=*b;
+    for(;b<c&&(*b<w||*b>(k*)T||*b==(k*)(long)v);b++);
+    if(b==c){
+        jmp_buf*j=alloca(sizeof(jmp_buf));
+        setjmp(*j);
+        rsubd(v);
+    } else{
+        y[v]=*b-w-y['F'];
+        w=*b;
+    }
 }
 
 q o(*rsubt)(u);
@@ -114,9 +120,7 @@ vo rsubt rsub=rsubd;
 
 o recorder(vo k*rec){
     static u i=0;
-    jmp_buf j;
     *(st->a=sk+9)=0;
-    setjmp(j);
     rsub(*rec?*rec:m[i++]);
 }
 
