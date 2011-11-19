@@ -7,6 +7,7 @@ Platforms on which all known/tested optimization levels work with no additional
 flags:
  * gcc 4.6.2 + x86[_64]
  * clang 2.9-16 + x86[_64]
+ * tcc 0.9.25
  * gcc 4.4.5 + alpha, arm, mips[el], powerpc[64], s390x (IBM zSeries)
  * gcc 4.1.3 + vax + NetBSD
 
@@ -18,3 +19,7 @@ owcc 1.9 + x86 + Windows:
 gcc 4.4.5 + sh4:
     -O0 works
     Higher optimization levels don't work for unknown reasons.
+
+Platforms which are known not to work:
+gcc 4.4.5 + SPARC:
+    Reasons unknown
