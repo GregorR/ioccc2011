@@ -56,7 +56,7 @@ char *j, *e;
 void rsubd(int v) {
     char *a=0,**b=&a;
     code[v] = last;
-    while (*b < jit || *b > end || *b == (char *) v) b++;
+    while (*b < last || *b > (char *) end || *b == (char *) (long) v) b++;
     size[v] = *b - last - size['F'];
     last = *b;
 }
@@ -80,7 +80,7 @@ F(v) *S a=sqrt(*S a); }
 void *lib1[] = {end,end,end,end,end};
 void *lib2[] = {end,ld,lP,lp,lv};
 
-#define W(c) memcpy(e,code[c],size[c]);e+=size[c];
+#define W(c) memcpy(e,code[(int)c],size[(int)c]);e+=size[(int)c];
 
 void literal(int v) {
     if (v>256) {
