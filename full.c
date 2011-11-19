@@ -45,8 +45,8 @@ o t(vo dat d) {
 
 o T() {}
 
-dat state;
-u stack[H];
+dat st;
+u sk[H];
 k*w;
 o*x[H];
 u y[H];
@@ -66,7 +66,7 @@ vo rsubt rsub=rsubd;
 o recorder(vo k*rec) {
     static u i=0;
     jmp_buf j;
-    *(state->a=stack+9)=0;
+    *(st->a=sk+9)=0;
     setjmp(j);
     rsub(*rec?*rec:m[i++]);
 }
@@ -94,8 +94,8 @@ o g(u v) {
 u main() {
     u i;
     k c;
-    dat d=state=malloc(64);
-    S a=stack+9;
+    dat d=st=malloc(64);
+    S a=sk+9;
     S h=0;
     S m=n;
     S l=(f*)lib1;
