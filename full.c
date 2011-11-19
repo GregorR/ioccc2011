@@ -21,7 +21,7 @@
 #define R(x) ;S r(#x);
 #define L(x,y) S l[x](d)R(y)
 #define F(x) void l##x(vo dat d) {
-#define Q(x) S a[-1] x##=*S a;S a--;R(x)
+#define Q(x) ;S a[-1] x##=*S a;S a--;R(x)
 #define O(x,y,z) x##y##z,
 #define q typedef
 #define H 9<<16
@@ -29,22 +29,11 @@
 q char k;
 q void o;
 q int u;
+q o (*f)(vo o*);
+q struct { u*a,h,*m,c; k*s[H]; f*l,j[H],r; }*dat;
 
 u m[]={G 0};
 u n[H];
-
-q o (*f)(vo o*);
-q struct { u*a,*t,h,*m; k**s; f*j,*l,r; }*dat;
-
-o t(vo dat d) {
-    R(1)/*R(F)*/Q(+)Q(-)Q(*)*S a=-*S a;R(_)L(1,/)L(2,P)L(3,p)L(4,v)
-#undef O
-#define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z];S r("");
-    G S l[0](d);
-}
-
-o T() {}
-
 dat st;
 u sk[H];
 k*w;
@@ -52,10 +41,66 @@ o*x[H];
 u y[H];
 k*j,*e;
 
-o rsubd(u v) {
+#define W(c) memcpy(e,x[(u)c],y[(u)c]);e+=y[(u)c];
+
+o g(u v){
+    if(v>256){
+        g(v/256);
+        g(256);
+        W('*')
+    }else{
+        W(m[v])
+    }
+}
+
+f K(k*p,dat d){
+    k c;
+    f r=(f)e;
+    W(1)
+    while(c=*p){
+        switch(c){
+            case'[':
+                c=1;
+                S s[S c]=++p;
+                for(;c;p++){
+                    if(*p=='[')c++;
+                    else if(*p==']')c--;
+                }
+                p[-1]='\0';
+                g(S c++);
+                break;
+            case'_':
+                p++;
+            default:
+                if(isdigit(*p)){
+                    g(atoi(p));
+                    while(isdigit(*p))p++;
+                }else p++;
+                W(c)
+        }
+    }
+    W(2)
+    return r;
+}
+
+o t(vo dat d) {
+    S r("\01")/*R(F)*/
+    Q(+)Q(-)Q(*)*S a=-*S a;R(_)
+    S a--;R(@)
+    S a[-1]^=*S a;*S a^=S a[-1]R(r)
+    S a[1]=*S a;S a++R(d)
+    L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)
+#undef O
+#define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z];S r("");
+    G S l[0](d);
+}
+
+o T(){ }
+
+o rsubd(u v){
     k*a=0,**b=&a;
     x[v]=w;
-    while (*b<w||*b>(k*)T||*b==(k*)(long)v)b++;
+    while(*b<w||*b>(k*)T||*b==(k*)(long)v)b++;
     y[v]=*b-w-y['F'];
     w=*b;
 }
@@ -63,7 +108,7 @@ o rsubd(u v) {
 q o(*rsubt)(u);
 vo rsubt rsub=rsubd;
 
-o recorder(vo k*rec) {
+o recorder(vo k*rec){
     static u i=0;
     jmp_buf j;
     *(st->a=sk+9)=0;
@@ -74,38 +119,27 @@ o recorder(vo k*rec) {
 F(d)S a[-1]/=*S a;S a--; }
 F(P)printf("%d",*S a); fflush(stdout); }
 F(p)printf("%d\n",*S a); }
+F(x)u n=*S a--;if(!S j[n])S j[n]=K(S s[n],d);S j[n](d); }
 F(v)*S a=sqrt(*S a); }
 
-o*lib1[]={T,T,T,T,T};
-o*lib2[]={T,ld,lP,lp,lv};
+o*lib1[]={T,T,T,T,T,T};
+o*lib2[]={T,ld,lP,lp,lx,lv};
 
-#define W(c) memcpy(e,x[(u)c],y[(u)c]);e+=y[(u)c];
-
-o g(u v) {
-    if (v>256) {
-        g(v/256);
-        g(256);
-        W('*');
-    } else {
-        W(m[v]);
-    }
-}
-
-u main() {
+u main(){
     u i;
-    k c;
-    dat d=st=malloc(64);
+    k*b,c;
+    dat d=st=malloc(sizeof(*st));
     S a=sk+9;
-    S h=0;
+    S h=S c=0;
     S m=n;
     S l=(f*)lib1;
     S r=(f)recorder;
     for (i=0;m[i];i++)n[m[i]]=i;
     w=(k*)t;
     t(d);
-    y['1']-=y['F'];
-    x['2']=w;
-    y['2']=(k*)T-w+8;
+    y[1]-=y['F'];
+    x[2]=w;
+    y[2]=(k*)T-w+8;
 
     S h=100;
     S l=(f*)lib2;
@@ -118,22 +152,10 @@ u main() {
 #else
     mmap(0,H,-1,MAP_PRIVATE|MAP_ANON,-1,0);
 #endif
-
-    W('1')
-    while (!feof(stdin)) {
-        if (scanf("%d",&i)>0) {
-            g(i);
-        } else if (scanf("%c",&c)>0) {
-            switch(c){
-                case '_':
-                    scanf("%d",&i);
-                    g(i);
-                    break;
-            }
-            W(c)
-        } else break;
-    }
-    W('2')
+    b=malloc(H);
+    fread(b,1,H,stdin);
+    b[H-1]='\0';
+    K(b,d);
 
 #ifdef JDEBUG
     fwrite(j, 1, e-j, stdout);
