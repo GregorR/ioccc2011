@@ -80,6 +80,10 @@ f K(k*p,dat d){
         }
     }
     W(2)
+#ifdef JDEBUG
+    fwrite(j, 1, e-j, stdout);
+    fflush(stdout);
+#endif
     return r;
 }
 
@@ -128,13 +132,12 @@ o*lib2[]={T,ld,lP,lp,lx,lv};
 u main(){
     u i;
     k*b,c;
-    dat d=st=malloc(sizeof(*st));
+    dat d=st=calloc(sizeof(*st),1);
     S a=sk+9;
     S m=n;
-    S h=S c=0;
-    S s=malloc(H);
+    S s=calloc(H,1);
     S l=(f*)lib1;
-    S j=malloc(H);
+    S j=calloc(H,1);
     S r=(f)recorder;
     for (i=0;m[i];i++)n[m[i]]=i;
     w=(k*)t;
@@ -159,10 +162,6 @@ u main(){
     b[H-1]='\0';
     K(b,d);
 
-#ifdef JDEBUG
-    fwrite(j, 1, e-j, stdout);
-    fflush(stdout);
-#endif
     ((f)j)(d);
 
     return 0;
