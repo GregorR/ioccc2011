@@ -60,6 +60,9 @@ f K(k*p,dat d){
     W(1)
     while((c=*p)){
         switch(c){
+            case'#':
+                while(*++p!=10);
+                break;
             case'[':
                 c=1;
                 S s[S c]=++p;
@@ -74,6 +77,7 @@ f K(k*p,dat d){
             case'S':
             case'l':
             case'L':
+            case'=':
                 g(*++p);
                 W(c)
                 p++;
@@ -106,7 +110,7 @@ o t(vo dat d) {
     *++S R[*S a]=S a[-1]; S a--; R(S)
     *S a=*S R[*S a]; R(l)
     *S a=*S R[*S a]--; R(L)
-    L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)
+    L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)L(6,=)
 #undef O
 #define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z]; S r("");
     G S l[0](d);
@@ -142,9 +146,10 @@ F(P)printf("%d",*S a); fflush(stdout); }
 F(p)printf("%d\n",*S a); }
 F(x)u n=*S a--;if(!S j[n])S j[n]=K(S s[n],d);S j[n](d); }
 F(v)*S a=sqrt(*S a); }
+F(e)S a-=3; if(S a[1]==S a[2]){ S a[1]=*S R[S a[3]]; S a++; S l[4](d); } }
 
-o*lib1[]={T,T,T,T,T,T};
-o*lib2[]={T,ld,lP,lp,lx,lv};
+o*lib1[]={T,T,T,T,T,T,T};
+o*lib2[]={T,ld,lP,lp,lx,lv,le};
 
 u main(){
     u i;
