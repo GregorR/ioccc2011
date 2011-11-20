@@ -19,7 +19,7 @@
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define G E(1)E(2)E(3)
 #define S d->
-#define R(x) ; S r(#x);
+#define R(x) ; if(S t)S r(#x);
 #define L(x,y) S l[x](d)R(y)
 #define F(x) void l##x(vo dat d) {
 #define Q(x); S a--; *S a=*S a x S a[1]; R(x)
@@ -33,7 +33,7 @@ q char k;
 q void o;
 q int u;
 q o (*f)(vo o*);
-q struct { u*a,**R,*m,h,c; k**s; f*l,*j,r; } *dat;
+q struct { u*a,**R,*m,h,c; k**s,t; f*l,*j,r; } *dat;
 
 u m[]={G 0};
 u n[H];
@@ -126,7 +126,7 @@ o t(vo dat d) {
     *S a=*S R[*S a]--; R(L)
     L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)L(6,|)
 #undef O
-#define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z]; S r("");
+#define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z]; if(S t)S r("");
     G S l[0](d);
 }
 
@@ -174,6 +174,7 @@ u main(){
     for(i=0;i<256;i++)S R[i]=J(H);
     S m=n;
     S s=J(H);
+    S t=1;
     S l=(f*)lib1;
     S j=J(H);
     S r=(f)re;
@@ -185,6 +186,7 @@ u main(){
     y[2]=(k*)T-w+8;
 
     S h=100;
+    S t=0;
     S l=(f*)lib2;
     S r=(f)T;
 
