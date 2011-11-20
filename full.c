@@ -28,6 +28,7 @@
 #define H 9<<16
 #define I case
 #define J(i) calloc(i,1)
+#define W(c) memcpy(e,x[(u)c],y[(u)c]); e+=y[(u)c];
 
 q char k;
 q void o;
@@ -43,8 +44,6 @@ k*w;
 o*x[H];
 u y[H];
 k*j,*e;
-
-#define W(c) memcpy(e,x[(u)c],y[(u)c]); e+=y[(u)c];
 
 o g(u v){
     if(v>256){
