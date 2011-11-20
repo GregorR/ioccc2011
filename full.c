@@ -122,7 +122,7 @@ o t(vo dt d) {
     *++S R[*M]=M[-1]; M--; R(S)
     *M=*S R[*M]; R(l)
     *M=*S R[*M]--; R(L)
-    L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)L(6,|)
+    L(1,/)L(2,p)L(3,x)L(4,|)
 #undef O
 #define O(x,y,z) *++M=S m[(x*S h+y)*S h+z]; S r("");
     G S l[0](d);
@@ -153,15 +153,13 @@ o re(vo k*rec){
     rs(*rec?*rec:m[i++]);
 }
 
-F(d)M[-1]/=*M; M--; }
-F(P)printf("%d",*M); fflush(stdout); }
+F(d)M--; *M/=M[1]; }
 F(p)printf("%d\n",*M); }
 F(x)u n=*M--; if(!S j[n])S j[n]=K(S s[n],d); S j[n](d); }
-F(v)*M=sqrt(*M); }
-F(1)M-=2; if(M[1]){ M++; *M=*S R[M[1]]; S l[4](d); } }
+F(1)M-=2; if(M[1]){ M++; *M=*S R[M[1]]; lx(d); } }
 
-o*lib1[]={ T,T,T,T,T,T,T} ;
-o*lib2[]={ T,ld,lP,lp,lx,lv,l1} ;
+o*lib1[]={ T,T,T,T,T} ;
+o*lib2[]={ T,ld,lp,lx,l1} ;
 
 u main(){
     u i;
