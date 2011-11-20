@@ -22,7 +22,7 @@
 #define R(x) ; S r(#x);
 #define L(x,y) S l[x](d)R(y)
 #define F(x) void l##x(vo dat d) {
-#define Q(x); S a[-1] x##=*S a; S a--; R(x)
+#define Q(x); S a--; *S a=*S a x S a[1]; R(x)
 #define O(x,y,z) x##y##z,
 #define q typedef
 #define H 9<<16
@@ -57,7 +57,7 @@ o g(u v){
 }
 
 f K(k*p,dat d){
-    k c;
+    k c,n=0;
     f r=(f)e;
     W(1)
     while((c=*p)){
@@ -75,11 +75,22 @@ f K(k*p,dat d){
                 p[-1]=0;
                 g(S c++);
                 break;
+            I'!':
+                n=1;
+                c=*++p;
+            I'=':
+            I'<':
+            I'>':
+                W(c)
+                if(n){ W('!')n=0; }
+                g(*++p);
+                W('|')
+                p++;
+                break;
             I's':
             I'S':
             I'l':
             I'L':
-            I'=':
                 g(*++p);
                 W(c)
                 p++;
@@ -106,13 +117,14 @@ o t(vo dat d) {
     S r("\01")/*R(F)*/
     Q(+)Q(-)Q(*)*S a=-*S a; R(_)
     S a--;R(@)
+    Q(==)Q(<)Q(>)*S a=!*S a; R(!)
     S a[-1]^=*S a; *S a^=S a[-1]R(r)
     S a[1]=*S a; S a++R(d)
     *S R[*S a]=S a[-1]; S a--; R(s)
     *++S R[*S a]=S a[-1]; S a--; R(S)
     *S a=*S R[*S a]; R(l)
     *S a=*S R[*S a]--; R(L)
-    L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)L(6,=)
+    L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)L(6,|)
 #undef O
 #define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z]; S r("");
     G S l[0](d);
@@ -148,10 +160,10 @@ F(P)printf("%d",*S a); fflush(stdout); }
 F(p)printf("%d\n",*S a); }
 F(x)u n=*S a--;if(!S j[n])S j[n]=K(S s[n],d);S j[n](d); }
 F(v)*S a=sqrt(*S a); }
-F(e)S a-=3; if(S a[1]==S a[2]){ S a[1]=*S R[S a[3]]; S a++; S l[4](d); } }
+F(1)S a-=2; if(S a[1]){ S a[1]=*S R[S a[2]]; S a++; S l[4](d); } }
 
 o*lib1[]={T,T,T,T,T,T,T};
-o*lib2[]={T,ld,lP,lp,lx,lv,le};
+o*lib2[]={T,ld,lP,lp,lx,lv,l1};
 
 u main(){
     u i;
