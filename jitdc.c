@@ -3,7 +3,7 @@
 #endif
 #include<setjmp.h>
 #include<stdio.h>
-#if !NOMMAP
+#if !NM
 #include<sys/mman.h>
 #endif
 #define vo volatile
@@ -51,7 +51,7 @@ main(){ u i; k*b; dt d=st=J(sizeof(*st)); M=sk+9; S R=J(256*sizeof(k*));
 for(i=0; i<256; i++)S R[i]=J(H); S m=n; S s=J(H); S l=(f*)lib1; S j=J(H); S
 r=(f)re; for (i=0; m[i]; i++)n[m[i]]=i; w=(k*)t; t(d); x[2]=w; y[2]=(k*)T-w+8;
 S h=100; S l=(f*)lib2; S r=(f)T; j=e=
-#if NOMMAP
+#if NM
 malloc(H);
 #else
 mmap(0,H,-1,MAP_PRIVATE|MAP_ANON,-1,0);

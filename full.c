@@ -8,7 +8,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#if !NOMMAP
+#if !NM
 #include<sys/mman.h>
 #endif
 #define vo volatile
@@ -184,7 +184,7 @@ u main(){
     S r=(f)T;
 
     j=e=
-#if NOMMAP
+#if NM
     malloc(H);
 #else
     mmap(0,H,-1,MAP_PRIVATE|MAP_ANON,-1,0);

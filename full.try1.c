@@ -5,7 +5,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#if !NOMMAP
+#if !NM
 #include<sys/mman.h>
 #endif
 #define i int
@@ -85,7 +85,7 @@ main(){
 
     /* get space */
     j=e=
-#if NOMMAP
+#if NM
     malloc(W);
 #else
     mmap(0,W,-1,MAP_PRIVATE|MAP_ANON,-1,0);

@@ -14,7 +14,7 @@ flags:
 Platforms which work but not at all optimization levels or needing special
 flags:
 owcc 1.9 + x86 + Windows:
-    Needs -DNOMMAP -DAH -fno-stack-check
+    Needs -DNM -DAH -fno-stack-check
 
 gcc 4.4.5 + sh4:
     -O0 works
