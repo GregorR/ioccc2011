@@ -77,9 +77,11 @@ f K(k*p,dt d){
             N'!':
                 n=1;
                 c=*++p;
-            I'=':
+                if(!(c&1))
             I'<':
             I'>':
+                c^=2;
+            I'=':
                 W(c)
                 if(n){ W('!')n=0; }
                 g(*++p);
@@ -156,7 +158,7 @@ F(P)printf("%d",*M); fflush(stdout); }
 F(p)printf("%d\n",*M); }
 F(x)u n=*M--; if(!S j[n])S j[n]=K(S s[n],d); S j[n](d); }
 F(v)*M=sqrt(*M); }
-F(1)M-=2; if(M[1]){ M[1]=*S R[M[2]]; M++; S l[4](d); } }
+F(1)M-=2; if(M[1]){ M++; *M=*S R[M[1]]; S l[4](d); } }
 
 o*lib1[]={ T,T,T,T,T,T,T} ;
 o*lib2[]={ T,ld,lP,lp,lx,lv,l1} ;
