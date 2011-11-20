@@ -116,7 +116,6 @@ f K(k*p,dat d){
 o t(vo dat d) {
     S r("\01")
     Q(+)Q(-)Q(*)*M=-*M; R(_)
-    M--;R(@)
     Q(==)Q(<)Q(>)*M=!*M; R(!)
     M[-1]^=*M; *M^=M[-1]R(r)
     M[1]=*M; M++R(d)
@@ -141,7 +140,7 @@ o rd(u v){
         setjmp(*j);
         rd(v);
     } else{
-        y[v]=*b-w-y['F'];
+        y[v]=*b-w;
         w=*b;
     }
 }
@@ -180,7 +179,6 @@ u main(){
     for (i=0;m[i];i++)n[m[i]]=i;
     w=(k*)t;
     t(d);
-    y[1]-=y['F'];
     x[2]=w;
     y[2]=(k*)T-w+8;
 
