@@ -19,16 +19,17 @@
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define G E(1)E(2)E(3)
 #define S d->
+#define M S a
 #define R(x) ; S r(#x);
 #define L(x,y) S l[x](d)R(y)
 #define F(x) void l##x(vo dat d) {
-#define Q(x); S a--; *S a=*S a x S a[1]; R(x)
+#define Q(x); M--; *M=*M x M[1]; R(x)
 #define O(x,y,z) x##y##z,
 #define q typedef
 #define H 9<<16
 #define I case
 #define J(i) calloc(i,1)
-#define W(c) memcpy(e,x[(u)c],y[(u)c]); e+=y[(u)c];
+#define W(c) e=memcpy(e,x[(u)c],y[(u)c])+y[(u)c];
 
 q char k;
 q void o;
@@ -113,19 +114,19 @@ f K(k*p,dat d){
 }
 
 o t(vo dat d) {
-    S r("\01")/*R(F)*/
-    Q(+)Q(-)Q(*)*S a=-*S a; R(_)
-    S a--;R(@)
-    Q(==)Q(<)Q(>)*S a=!*S a; R(!)
-    S a[-1]^=*S a; *S a^=S a[-1]R(r)
-    S a[1]=*S a; S a++R(d)
-    *S R[*S a]=S a[-1]; S a--; R(s)
-    *++S R[*S a]=S a[-1]; S a--; R(S)
-    *S a=*S R[*S a]; R(l)
-    *S a=*S R[*S a]--; R(L)
+    S r("\01")
+    Q(+)Q(-)Q(*)*M=-*M; R(_)
+    M--;R(@)
+    Q(==)Q(<)Q(>)*M=!*M; R(!)
+    M[-1]^=*M; *M^=M[-1]R(r)
+    M[1]=*M; M++R(d)
+    *S R[*M]=M[-1]; M--; R(s)
+    *++S R[*M]=M[-1]; M--; R(S)
+    *M=*S R[*M]; R(l)
+    *M=*S R[*M]--; R(L)
     L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)L(6,|)
 #undef O
-#define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z]; S r("");
+#define O(x,y,z) *++M=S m[(x*S h+y)*S h+z]; S r("");
     G S l[0](d);
 }
 
@@ -154,12 +155,12 @@ o re(vo k*rec){
     rs(*rec?*rec:m[i++]);
 }
 
-F(d)S a[-1]/=*S a;S a--; }
-F(P)printf("%d",*S a); fflush(stdout); }
-F(p)printf("%d\n",*S a); }
-F(x)u n=*S a--;if(!S j[n])S j[n]=K(S s[n],d);S j[n](d); }
-F(v)*S a=sqrt(*S a); }
-F(1)S a-=2; if(S a[1]){ S a[1]=*S R[S a[2]]; S a++; S l[4](d); } }
+F(d)M[-1]/=*M;M--; }
+F(P)printf("%d",*M); fflush(stdout); }
+F(p)printf("%d\n",*M); }
+F(x)u n=*M--;if(!S j[n])S j[n]=K(S s[n],d);S j[n](d); }
+F(v)*M=sqrt(*M); }
+F(1)M-=2; if(M[1]){ M[1]=*S R[M[2]]; M++; S l[4](d); } }
 
 o*lib1[]={T,T,T,T,T,T,T};
 o*lib2[]={T,ld,lP,lp,lx,lv,l1};
@@ -168,7 +169,7 @@ u main(){
     u i;
     k*b;
     dat d=st=J(sizeof(*st));
-    S a=sk+9;
+    M=sk+9;
     S R=J(256*sizeof(k*));
     for(i=0;i<256;i++)S R[i]=J(H);
     S m=n;
