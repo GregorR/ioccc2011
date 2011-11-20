@@ -30,6 +30,7 @@
 #define I case
 #define J(i) calloc(i,1)
 #define W(c) e=(k*)memcpy(e,x[(u)c],y[(u)c])+y[(u)c];
+#define N break; I
 
 q char k;
 q void o;
@@ -37,7 +38,7 @@ q int u;
 q o (*f)(vo o*);
 q struct { u*a,**R,*m,h,c; k**s; f*l,*j,r; } *dt;
 
-u m[]={G 0};
+u m[]={ G 0} ;
 u n[H];
 dt st;
 u sk[H];
@@ -51,7 +52,7 @@ o g(u v){
         g(v/256);
         g(256);
         W('*')
-    }else{
+    } else{
         W(m[v])
     }
 }
@@ -64,18 +65,16 @@ f K(k*p,dt d){
         switch(c){
             I'#':
                 while(*++p!=10);
-                break;
-            I'[':
+            N'[':
                 c=1;
                 S s[S c]=++p;
-                for(;c;p++){
+                for(; c; p++){
                     if(*p=='[')c++;
                     else if(*p==']')c--;
                 }
                 p[-1]=0;
                 g(S c++);
-                break;
-            I'!':
+            N'!':
                 n=1;
                 c=*++p;
             I'=':
@@ -86,16 +85,14 @@ f K(k*p,dt d){
                 g(*++p);
                 W('|')
                 p++;
-                break;
-            I's':
+            N's':
             I'S':
             I'l':
             I'L':
                 g(*++p);
                 W(c)
                 p++;
-                break;
-            I'_':
+            N'_':
                 p++;
             default:
                 if(isdigit(*p)){
@@ -134,7 +131,7 @@ o T(){ }
 o rd(u v){
     k*a=0,**b=&a,**c=b+32;
     x[v]=w;
-    for(;b<c&&(*b<w||*b>(k*)T||*b==(k*)(long)v);b++);
+    for(; b<c&&(*b<w||*b>(k*)T||*b==(k*)(long)v); b++);
     if(b==c){
         jmp_buf*j=alloca(sizeof(jmp_buf));
         setjmp(*j);
@@ -154,15 +151,15 @@ o re(vo k*rec){
     rs(*rec?*rec:m[i++]);
 }
 
-F(d)M[-1]/=*M;M--; }
+F(d)M[-1]/=*M; M--; }
 F(P)printf("%d",*M); fflush(stdout); }
 F(p)printf("%d\n",*M); }
-F(x)u n=*M--;if(!S j[n])S j[n]=K(S s[n],d);S j[n](d); }
+F(x)u n=*M--; if(!S j[n])S j[n]=K(S s[n],d); S j[n](d); }
 F(v)*M=sqrt(*M); }
 F(1)M-=2; if(M[1]){ M[1]=*S R[M[2]]; M++; S l[4](d); } }
 
-o*lib1[]={T,T,T,T,T,T,T};
-o*lib2[]={T,ld,lP,lp,lx,lv,l1};
+o*lib1[]={ T,T,T,T,T,T,T} ;
+o*lib2[]={ T,ld,lP,lp,lx,lv,l1} ;
 
 u main(){
     u i;
@@ -170,13 +167,13 @@ u main(){
     dt d=st=J(sizeof(*st));
     M=sk+9;
     S R=J(256*sizeof(k*));
-    for(i=0;i<256;i++)S R[i]=J(H);
+    for(i=0; i<256; i++)S R[i]=J(H);
     S m=n;
     S s=J(H);
     S l=(f*)lib1;
     S j=J(H);
     S r=(f)re;
-    for (i=0;m[i];i++)n[m[i]]=i;
+    for (i=0; m[i]; i++)n[m[i]]=i;
     w=(k*)t;
     t(d);
     x[2]=w;

@@ -13,6 +13,7 @@ int main()
                 c=getchar();
                 rc++;
                 if (!isspace(c)) {
+                    printf("WARNING! %c\n", c);
                     cc += 2;
                 }
             } else {
