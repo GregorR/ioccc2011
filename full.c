@@ -19,7 +19,7 @@
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define G E(1)E(2)E(3)
 #define S d->
-#define R(x) ; S r(#x);
+#define R(x) ; S u(); S r(#x); S u();
 #define L(x,y) S l[x](d)R(y)
 #define F(x) void l##x(vo dat d) {
 #define Q(x); S a--; *S a=*S a x S a[1]; R(x)
@@ -33,13 +33,13 @@ q char k;
 q void o;
 q int u;
 q o (*f)(vo o*);
-q struct { u*a,**R,*m,h,c; k**s; f*l,*j,r; } *dat;
+q struct { u*a,**R,*m,h,c; k**s; o(*u)(); f*l,*j,r; } *dat;
 
 u m[]={G 0};
 u n[H];
 dat st;
 u sk[H];
-k*w;
+k*U,*w;
 o*x[H];
 u y[H];
 k*j,*e;
@@ -114,7 +114,7 @@ f K(k*p,dat d){
 }
 
 o t(vo dat d) {
-    S r("\01")/*R(F)*/
+    S u(); S r("\01"); S u()R(F)
     Q(+)Q(-)Q(*)*S a=-*S a; R(_)
     S a--;R(@)
     Q(==)Q(<)Q(>)*S a=!*S a; R(!)
@@ -126,24 +126,28 @@ o t(vo dat d) {
     *S a=*S R[*S a]--; R(L)
     L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)L(6,|)
 #undef O
-#define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z]; S r("");
+#define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z]; S u(); S r(""); S u();
     G S l[0](d);
 }
 
 o T(){ }
 
-o rd(u v){
+o ru(){
     k*a=0,**b=&a,**c=b+32;
-    x[v]=w;
-    for(;b<c&&(*b<w||*b>(k*)T||*b==(k*)(long)v);b++);
+    for(;b<c&&(*b<w||*b>(k*)T);b++);
     if(b==c){
         jmp_buf*j=alloca(sizeof(jmp_buf));
         setjmp(*j);
-        rd(v);
-    } else{
-        y[v]=*b-w-y['F'];
+        ru();
+    } else {
+        U=w;
         w=*b;
     }
+}
+
+o rd(u v){
+    x[v]=U;
+    y[v]=w-U-y['F'];
 }
 
 q o(*rt)(u);
@@ -174,6 +178,7 @@ u main(){
     for(i=0;i<256;i++)S R[i]=J(H);
     S m=n;
     S s=J(H);
+    S u=ru;
     S l=(f*)lib1;
     S j=J(H);
     S r=(f)re;
