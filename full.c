@@ -187,7 +187,6 @@ u main(){
     S l=(f*)lib2;
     S r=(f)T;
 
-    /* get space */
     j=e=
 #if NOMMAP
     malloc(H);
@@ -195,10 +194,5 @@ u main(){
     mmap(0,H,-1,MAP_PRIVATE|MAP_ANON,-1,0);
 #endif
     b=malloc(H);
-    b[fread(b,1,(H)-1,stdin)]=0;
-    K(b,d);
-
-    ((f)j)(d);
-
-    return 0;
+    while(fgets(b,H,stdin))((f)K(b,d))(d);
 }
