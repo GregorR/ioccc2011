@@ -3,22 +3,22 @@ space() { echo; echo; echo; }
 
 echo native
 make clean all CFLAGS=-O3
-./jitchards < 5.dc
+./jitdc < 5.dc
 space
 
 echo 32
 make clean all CFLAGS='-m32 -O3'
-./jitchards < 5.dc
+./jitdc < 5.dc
 space
 
 echo clang
 make clean all CC=clang CFLAGS=-O3
-./jitchards < 5.dc
+./jitdc < 5.dc
 space
 
 echo clang-32
 make clean all CC=clang CFLAGS='-m32 -O3'
-./jitchards < 5.dc
+./jitdc < 5.dc
 space
 
 #echo sparc
@@ -51,15 +51,15 @@ space
 
 echo arm
 make clean all CC=arm-linux-gnueabi-gcc CFLAGS='-static -O3'
-qemu-arm ./jitchards < 5.dc
+qemu-arm ./jitdc < 5.dc
 space
 
 if [ "`which owcc`" ]
 then
     echo OpenWatcom
-    make clean all CC=owcc CFLAGS='-b win32 -DNOMMAP -DAH -fno-stack-check' 2> /dev/null && mv jitchards jitchards.exe
-    WINEPREFIX="$PWD/wine" WINEDEBUG=-all wine jitchards.exe < 5.dc
-    rm -f jitchards.exe
+    make clean all CC=owcc CFLAGS='-b win32 -DNOMMAP -DAH -fno-stack-check' 2> /dev/null && mv jitdc jitdc.exe
+    WINEPREFIX="$PWD/wine" WINEDEBUG=-all wine jitdc.exe < 5.dc
+    rm -f jitdc.exe
 else
     echo 'WARNING: Not testing OpenWatcom'
 fi
@@ -69,7 +69,7 @@ if [ "`which tcc`" ]
 then
     echo tcc
     make clean all CC=tcc CFLAGS=-O2
-    ./jitchards < 5.dc
+    ./jitdc < 5.dc
 else
     echo 'WARNING: Not testing tcc'
 fi

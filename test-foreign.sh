@@ -4,4 +4,4 @@ CROSSQ="$2"
 CROSSF="$3"
 
 make clean all CC=$CROSSC'-linux-gnu-gcc' CFLAGS='-static '"$CROSSF"
-qemu-"$CROSSQ" ./jitchards < 5.dc
+qemu-"$CROSSQ" ./jitdc < 5.dc

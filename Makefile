@@ -5,13 +5,13 @@ LDFLAGS=
 
 OBJS=full.o
 
-all: jitchards
+all: jitdc
 
-jitchards: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o jitchards
+jitdc: $(OBJS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o jitdc
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) jitchards
+	rm -f $(OBJS) jitdc

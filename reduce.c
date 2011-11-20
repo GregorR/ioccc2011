@@ -93,7 +93,7 @@ int main()
     /* then recurse */
     for (sl = 2; sl < f.bufused - 1; sl++) {
         int ct = 0;
-        fprintf(stderr, "%d/%d\r", sl, f.bufused - 1);
+        fprintf(stderr, "  %d/%d\r", sl, f.bufused - 1);
         /* count all the greaters */
         for (ssn = ssl; ssn; ssn = ssn->next) {
             ct++;
