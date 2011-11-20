@@ -26,6 +26,8 @@
 #define O(x,y,z) x##y##z,
 #define q typedef
 #define H 9<<16
+#define I case
+#define J(i) calloc(i,1)
 
 q char k;
 q void o;
@@ -60,10 +62,10 @@ f K(k*p,dat d){
     W(1)
     while((c=*p)){
         switch(c){
-            case'#':
+            I'#':
                 while(*++p!=10);
                 break;
-            case'[':
+            I'[':
                 c=1;
                 S s[S c]=++p;
                 for(;c;p++){
@@ -73,16 +75,16 @@ f K(k*p,dat d){
                 p[-1]=0;
                 g(S c++);
                 break;
-            case's':
-            case'S':
-            case'l':
-            case'L':
-            case'=':
+            I's':
+            I'S':
+            I'l':
+            I'L':
+            I'=':
                 g(*++p);
                 W(c)
                 p++;
                 break;
-            case'_':
+            I'_':
                 p++;
             default:
                 if(isdigit(*p)){
@@ -154,14 +156,14 @@ o*lib2[]={T,ld,lP,lp,lx,lv,le};
 u main(){
     u i;
     k*b;
-    dat d=st=calloc(1,sizeof(*st));
+    dat d=st=J(sizeof(*st));
     S a=sk+9;
-    S R=calloc(256,sizeof(k*));
-    for(i=0;i<256;i++)S R[i]=calloc(H,1);
+    S R=J(256*sizeof(k*));
+    for(i=0;i<256;i++)S R[i]=J(H);
     S m=n;
-    S s=calloc(H,1);
+    S s=J(H);
     S l=(f*)lib1;
-    S j=calloc(H,1);
+    S j=J(H);
     S r=(f)recorder;
     for (i=0;m[i];i++)n[m[i]]=i;
     w=(k*)t;
