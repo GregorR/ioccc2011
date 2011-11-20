@@ -22,24 +22,24 @@
 #define M S a
 #define R(x) ; S r(#x);
 #define L(x,y) S l[x](d)R(y)
-#define F(x) void l##x(vo dat d) {
+#define F(x) void l##x(vo dt d) {
 #define Q(x); M--; *M=*M x M[1]; R(x)
 #define O(x,y,z) x##y##z,
 #define q typedef
 #define H 9<<16
 #define I case
 #define J(i) calloc(i,1)
-#define W(c) e=memcpy(e,x[(u)c],y[(u)c])+y[(u)c];
+#define W(c) e=(k*)memcpy(e,x[(u)c],y[(u)c])+y[(u)c];
 
 q char k;
 q void o;
 q int u;
 q o (*f)(vo o*);
-q struct { u*a,**R,*m,h,c; k**s; f*l,*j,r; } *dat;
+q struct { u*a,**R,*m,h,c; k**s; f*l,*j,r; } *dt;
 
 u m[]={G 0};
 u n[H];
-dat st;
+dt st;
 u sk[H];
 k*w;
 o*x[H];
@@ -56,7 +56,7 @@ o g(u v){
     }
 }
 
-f K(k*p,dat d){
+f K(k*p,dt d){
     k c,n=0;
     f r=(f)e;
     W(1)
@@ -113,7 +113,7 @@ f K(k*p,dat d){
     return r;
 }
 
-o t(vo dat d) {
+o t(vo dt d) {
     S r("\01")
     Q(+)Q(-)Q(*)*M=-*M; R(_)
     Q(==)Q(<)Q(>)*M=!*M; R(!)
@@ -167,7 +167,7 @@ o*lib2[]={T,ld,lP,lp,lx,lv,l1};
 u main(){
     u i;
     k*b;
-    dat d=st=J(sizeof(*st));
+    dt d=st=J(sizeof(*st));
     M=sk+9;
     S R=J(256*sizeof(k*));
     for(i=0;i<256;i++)S R[i]=J(H);
