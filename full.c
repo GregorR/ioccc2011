@@ -19,10 +19,10 @@
 #define E(x) D(x##1)D(x##2)D(x##3)
 #define G E(1)E(2)E(3)
 #define S d->
-#define R(x) ;S r(#x);
+#define R(x) ; S r(#x);
 #define L(x,y) S l[x](d)R(y)
 #define F(x) void l##x(vo dat d) {
-#define Q(x) ;S a[-1] x##=*S a;S a--;R(x)
+#define Q(x); S a[-1] x##=*S a; S a--; R(x)
 #define O(x,y,z) x##y##z,
 #define q typedef
 #define H 9<<16
@@ -31,7 +31,7 @@ q char k;
 q void o;
 q int u;
 q o (*f)(vo o*);
-q struct { u*a,**R,*m,h,c; k**s; f*l,*j,r; }*dat;
+q struct { u*a,**R,*m,h,c; k**s; f*l,*j,r; } *dat;
 
 u m[]={G 0};
 u n[H];
@@ -42,7 +42,7 @@ o*x[H];
 u y[H];
 k*j,*e;
 
-#define W(c) memcpy(e,x[(u)c],y[(u)c]);e+=y[(u)c];
+#define W(c) memcpy(e,x[(u)c],y[(u)c]); e+=y[(u)c];
 
 o g(u v){
     if(v>256){
@@ -67,7 +67,7 @@ f K(k*p,dat d){
                     if(*p=='[')c++;
                     else if(*p==']')c--;
                 }
-                p[-1]='\0';
+                p[-1]=0;
                 g(S c++);
                 break;
             case's':
@@ -84,7 +84,7 @@ f K(k*p,dat d){
                 if(isdigit(*p)){
                     g(atoi(p));
                     while(isdigit(*p))p++;
-                }else p++;
+                } else p++;
                 W(c)
         }
     }
@@ -98,17 +98,17 @@ f K(k*p,dat d){
 
 o t(vo dat d) {
     S r("\01")/*R(F)*/
-    Q(+)Q(-)Q(*)*S a=-*S a;R(_)
+    Q(+)Q(-)Q(*)*S a=-*S a; R(_)
     S a--;R(@)
-    S a[-1]^=*S a;*S a^=S a[-1]R(r)
-    S a[1]=*S a;S a++R(d)
-    *S R[*S a]=S a[-1];S a--;R(s)
-    *++S R[*S a]=S a[-1];S a--;R(S)
-    *S a=*S R[*S a];R(l)
-    *S a=*S R[*S a]--;R(L)
+    S a[-1]^=*S a; *S a^=S a[-1]R(r)
+    S a[1]=*S a; S a++R(d)
+    *S R[*S a]=S a[-1]; S a--; R(s)
+    *++S R[*S a]=S a[-1]; S a--; R(S)
+    *S a=*S R[*S a]; R(l)
+    *S a=*S R[*S a]--; R(L)
     L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)
 #undef O
-#define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z];S r("");
+#define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z]; S r("");
     G S l[0](d);
 }
 
