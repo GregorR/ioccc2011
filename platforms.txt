@@ -8,7 +8,7 @@ flags:
  * gcc 4.6.2 + x86[_64]
  * clang 2.9-16 + x86[_64]
  * tcc 0.9.25
- * gcc 4.4.5 + alpha, arm, mips[el], powerpc, s390x (IBM zSeries)
+ * gcc 4.4.5 + alpha, arm, mips[el], powerpc[64], s390x (IBM zSeries)
  * gcc 4.1.3 + vax + NetBSD
 
 Platforms which work but not at all optimization levels or needing special
@@ -16,7 +16,7 @@ flags:
 owcc 1.9 + x86 + Windows:
     Needs -fno-stack-check
 
-gcc 4.4.5 + sh4, powerpc64:
+gcc 4.4.5 + sh4:
     -O0 works
     Higher optimization levels don't work for unknown reasons.
 

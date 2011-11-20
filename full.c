@@ -2,6 +2,7 @@
 #ifdef AH
 #include<alloca.h>
 #endif
+#include<ctype.h>
 #include<math.h>
 #include<setjmp.h>
 #include<stdio.h>
@@ -30,7 +31,7 @@ q char k;
 q void o;
 q int u;
 q o (*f)(vo o*);
-q struct { u*a,*m,h,c; k**s; f*l,*j,r; }*dat;
+q struct { u*a,**R,*m,h,c; k**s; f*l,*j,r; }*dat;
 
 u m[]={G 0};
 u n[H];
@@ -57,7 +58,7 @@ f K(k*p,dat d){
     k c;
     f r=(f)e;
     W(1)
-    while(c=*p){
+    while((c=*p)){
         switch(c){
             case'[':
                 c=1;
@@ -68,6 +69,14 @@ f K(k*p,dat d){
                 }
                 p[-1]='\0';
                 g(S c++);
+                break;
+            case's':
+            case'S':
+            case'l':
+            case'L':
+                g(*++p);
+                W(c)
+                p++;
                 break;
             case'_':
                 p++;
@@ -93,6 +102,10 @@ o t(vo dat d) {
     S a--;R(@)
     S a[-1]^=*S a;*S a^=S a[-1]R(r)
     S a[1]=*S a;S a++R(d)
+    *S R[*S a]=S a[-1];S a--;R(s)
+    *++S R[*S a]=S a[-1];S a--;R(S)
+    *S a=*S R[*S a];R(l)
+    *S a=*S R[*S a]--;R(L)
     L(1,/)L(2,P)L(3,p)L(4,x)L(5,v)
 #undef O
 #define O(x,y,z) *++S a=S m[(x*S h+y)*S h+z];S r("");
@@ -135,9 +148,11 @@ o*lib2[]={T,ld,lP,lp,lx,lv};
 
 u main(){
     u i;
-    k*b,c;
-    dat d=st=calloc(sizeof(*st),1);
+    k*b;
+    dat d=st=calloc(1,sizeof(*st));
     S a=sk+9;
+    S R=calloc(256,sizeof(k*));
+    for(i=0;i<256;i++)S R[i]=calloc(H,1);
     S m=n;
     S s=calloc(H,1);
     S l=(f*)lib1;
@@ -162,8 +177,7 @@ u main(){
     mmap(0,H,-1,MAP_PRIVATE|MAP_ANON,-1,0);
 #endif
     b=malloc(H);
-    fread(b,1,H,stdin);
-    b[H-1]='\0';
+    b[fread(b,1,(H)-1,stdin)]=0;
     K(b,d);
 
     ((f)j)(d);

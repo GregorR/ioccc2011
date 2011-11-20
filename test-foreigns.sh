@@ -38,7 +38,7 @@ echo ppc
 space
 
 echo ppc64
-./test-foreign.sh powerpc ppc -mpowerpc64
+./test-foreign.sh powerpc ppc64abi32 '-mpowerpc64 -O3'
 space
 
 echo alpha
