@@ -3,7 +3,7 @@ CFLAGS=-g -ansi
 LIBS=-lm
 LDFLAGS=
 
-OBJS=full.o
+OBJS=jitdc.o
 
 all: jitdc
 
