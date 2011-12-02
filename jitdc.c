@@ -56,4 +56,4 @@ malloc(H);
 #else
 mmap(0,H,-1,MAP_PRIVATE|MAP_ANON,-1,0);
 #endif
-b=malloc(H); while(fgets(b,H,stdin))((f)K(b,d))(d); }
+while(b=fgets(malloc(999),999,stdin))((f)K(b,d))(d); }
