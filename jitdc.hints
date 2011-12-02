@@ -36,9 +36,12 @@ time". It compiles the code for a macro the first time you execute it.
 Notes about the "look" of the code (still spoilers): OK, I have a lot of
 #defines obscuring the code. Honestly they don't need to be there for
 obfuscation purposes, they're there to do what I needed to do within the space
-requirements. I think you'll find that even if you run the code through `indent
--kr -nut` and `cc -E` it's still pretty incomprehensible. In particular look at
-the macros A, B, C, D, E and G, which I hope you'll enjoy.
+requirements. I was also considering doing something more interesting than
+proper indentation for the code formatting, but forming code into pretty
+pictures is overdone, and walls of text are a very shallow obfuscation
+strategy. I think you'll find that even if you run the code through indent and
+cc -E, it's still pretty incomprehensible. In particular look at the macros A,
+B, C, D, E and G, which I hope you'll enjoy.
 
 Platforms on which all known/tested optimization levels work with no additional
 flags:
