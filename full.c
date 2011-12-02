@@ -135,7 +135,7 @@ o rd(u v){
     x[v]=w;
     for(; b<c&&(*b<w||*b>(k*)T||*b==(k*)(long)v); b++);
     if(b==c){
-        jmp_buf*j=alloca(sizeof(jmp_buf));
+        jmp_buf*j=alloca(sizeof(*j));
         setjmp(*j);
         rd(v);
     } else{
