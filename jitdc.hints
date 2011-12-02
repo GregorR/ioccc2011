@@ -1,0 +1,58 @@
+This is an implementation of the classic UNIX dc command, the reverse-polish
+calculator. Actually it's a pretty bad implementation, since it only implements
+32-bit integers (well, sizeof(int)-sized integers). It only implements the
+commands +, -, *, /, p (only for numbers), register stacks, macros and
+comparisons. Wow, you'd think I could've done better in 2K of code.
+
+OH! I forgot to mention! It's a JIT.
+
+Wait, don't stop reading! I know what you're thinking, platform-specific code
+is discouraged in IOCCC. But do you see any platform-specific code? There's no
+assembler here! This JIT works on a dozen platforms, and the only
+platform-specific assumptions it makes are that the stack grows down and
+integers are at least 32-bit.
+
+You will probably get warnings while compiling the code. In particular:
+ * If your system requires the inclusion of alloca.h to use alloca, use the
+   compile flag -DAH
+ * If your system cannot use mmap, use the compile flag -DNM
+ * I don't include any headers I don't strictly need to, so you'll get warnings
+   about (at least) memcpy, isdigit, atoi, calloc, malloc and alloca if you
+   didn't use -DAH.
+ * GCC likes to complain about while (a = b) (assignments as a condition).
+ * I don't return from main, even though it's declared to return int.
+
+Notes specifically to the reviewers (spoilers): The 't' function is a template
+function. The 're' function examines the stack (and if necessary registers, by
+way of a setjmp without a longjmp) to find a return address. It uses the return
+addresses it finds to chop up the 't' function into one chunk per input
+command, plus the prologue and epilogue. Then it puts together the code by just
+pasting the templates. Since the only kind of jumps dc has are
+conditionally-executed macros, I never need to modify the code as I'm JITting
+it. Speaking of conditionally (or unconditionally) executed macros, my JIT is
+in fact a proper JIT, in the sense that it only compiles the code "just in
+time". It compiles the code for a macro the first time you execute it.
+
+Notes about the "look" of the code (still spoilers): OK, I have a lot of
+#defines obscuring the code. Honestly they don't need to be there for
+obfuscation purposes, they're there to do what I needed to do within the space
+requirements. I think you'll find that even if you run the code through `indent
+-kr -nut` and `cc -E` it's still pretty incomprehensible. In particular look at
+the macros A, B, C, D, E and G, which I hope you'll enjoy.
+
+Platforms on which all known/tested optimization levels work with no additional
+flags:
+ * gcc 4.6.2 + x86[_64] + GNU/Linux, Mac OS X or Windows
+ * clang 2.9-16 + x86[_64] + GNU/Linux or Mac OS X
+ * tcc 0.9.25
+ * gcc 4.4.5 + alpha, arm, mips[el], powerpc[64], s390x (IBM zSeries)
+ * gcc 4.1.3 + vax + NetBSD
+
+Platforms which work but not at all optimization levels or needing special
+flags:
+owcc 1.9 + x86 + Windows:
+    Needs -DNM -DAH -fno-stack-check
+
+gcc 4.4.5 + sh4:
+    -O0 works
+    Higher optimization levels don't work for unknown reasons.
