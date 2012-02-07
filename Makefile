@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-g -ansi
+CFLAGS=-g
 LIBS=-lm
 LDFLAGS=
 
