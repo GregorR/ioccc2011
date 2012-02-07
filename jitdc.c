@@ -44,12 +44,14 @@ k *w;
 o *x[H];
 u y[H];
 k *j, *e;
+u l=256;
 o g(u v)
 {
-    if (v > 256) {
-        g(v / 256);
-        g(256);
-    W('*')} else {
+    if (v > l) {
+        g(v / l);
+        g(l);
+        W('*') g(v % l);
+    W('+')} else {
     W(m[v])}
 }
 
@@ -169,8 +171,8 @@ u main()
     k *b;
     dt d = st = J(sizeof(*st));
     M = sk + 9;
-    S R = J(256 * sizeof(k *));
-    for (i = 0; i < 256; i++)
+    S R = J(l * sizeof(k *));
+    for (i = 0; i < l; i++)
         S R[i] = J(H);
     S m = n;
     S s = J(H);
